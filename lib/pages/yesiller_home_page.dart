@@ -16,17 +16,14 @@ class YesillerHomePage extends StatefulWidget {
 }
 
 class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
-
   final Curve _curve = Curves.easeInOutCubic;
-
 
   @override
   void initState() {
 //    loadImages();
     Timer.periodic(const Duration(seconds: 10), (timer) async {
       await pageController.animateToPage(current + 1,
-          duration: const Duration(milliseconds: 1700),
-          curve: _curve);
+          duration: const Duration(milliseconds: 1700), curve: _curve);
 //      setState(() {
 //        if (current == -1) {
 //          current = 1;
@@ -104,7 +101,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                         image: DecorationImage(
                             image: AssetImage("assets/${e.key}"),
                             fit: BoxFit.cover)),
-                    height: 600,
+                    height: size.height,
                     alignment: const Alignment(-0.8986516466, 0),
                     width: size.width),
                 AnimatedPositioned(
@@ -155,63 +152,202 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
 
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Column(
-        children: [
-          Stack(
-            alignment: Alignment.topCenter,
-            children: [
-              gecisli(
-                size: Size(size.width, 600),
-              ),
-              Positioned(
-                left: 0,
-                top: 0,
-                height: 60,
-                width: size.width,
-                child: ClipRect(
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 60,
-                          width: 300,
-                          alignment: Alignment.centerLeft,
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                  colors: [
-                                Colors.white.withOpacity(0.6),
-                                Colors.transparent
-                              ],
-                                  stops: const [
-                                0.3,
-                                1
-                              ],
-                                  begin: Alignment.centerLeft,
-                                  end: const Alignment(1, 0))),
-                          child: Container(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                gecisli(
+                  size: Size(size.width, 650),
+                ),
+                Positioned(
+                  left: 0,
+                  top: 0,
+                  height: 65,
+                  width: size.width,
+                  child: ClipRect(
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            height: 65,
+                            width: 300,
                             alignment: Alignment.centerLeft,
-                            decoration: const BoxDecoration(
-                              color: Colors.transparent,
-                            ),
-                            height: 60,
-                            width: 120,
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset(
-                              "assets/logoyeni.png",
-                              fit: BoxFit.fitHeight,
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                    colors: [
+                                  Colors.white.withOpacity(0.6),
+                                  Colors.transparent
+                                ],
+                                    stops: const [
+                                  0.3,
+                                  1
+                                ],
+                                    begin: Alignment.centerLeft,
+                                    end: const Alignment(1, 0))),
+                            child: Container(margin: EdgeInsets.only(left: 15),
+                              alignment: Alignment.centerLeft,
+                              decoration: const BoxDecoration(
+                                color: Colors.transparent,
+                              ),
+                              height: 65,
+                              width: 120,
+
+                              child: Image.asset(
+                                "assets/logoyeni.png",
+                                fit: BoxFit.fitHeight,
+                              ),
                             ),
                           ),
-                        )
-                      ],
+
+
+                         ///  ÜST BUTONLAR
+
+
+
+                          Container(
+                            width: size.width * 0.32,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 45),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  FlatButton(
+                                      onPressed: () {},
+                                      child: Text(
+                                        "Anasayfa",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 14),
+                                      )),
+                                  FlatButton(
+                                      onPressed: () {},
+                                      child: Text(
+                                        "Ürünler",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 14),
+                                      )),
+                                  FlatButton(
+                                      onPressed: () {},
+                                      child: Text(
+                                        "Kurumsal",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 14),
+                                      )),
+                                  FlatButton(
+                                      onPressed: () {},
+                                      child: Text(
+                                        "İletişim",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 14),
+                                      )),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
+                )
+              ],
+            ),
+            Container(
+              width: size.width,
+              height: 300,
+              color: Color(0xFF012418),
+
+
+
+
+              ///ALT TARAF ADRESLER
+
+
+
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Column(crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "LARENDE ŞUBE",
+                          style: TextStyle(height: 5,color: Colors.white, fontSize: 18),
+                        ),
+                        Text(
+                          "Hacıfettah Mahallesi Furkandede Cad.\n            No:38/A Meram KONYA",
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        ),SizedBox(height: 28,),
+                        Row(
+                          children: [Icon(Icons.phone,color:Colors.white,size: 16,),SizedBox(width: 10),
+                            Text(
+                              "Tel: 0 (332) 351 88 77",
+                              style: TextStyle(color: Colors.white, fontSize: 15),
+                            ),
+
+                          ],
+                        ),SizedBox(height: 15,),
+                        Row(
+                          children: [Icon(Icons.phone_android,color:Colors.white,size: 16,),SizedBox(width: 10),
+                            Text(
+                              "Tel: 0 (332) 351 88 77",
+                              style: TextStyle(color: Colors.white, fontSize: 15),
+                            ),
+
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 60,),
+                    Column(crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "MERAM ŞUBE",
+                          style: TextStyle(height: 5,color: Colors.white, fontSize: 18),
+                        ),
+                        Text(
+                          "Toprak Sarnıç Mah. Büyük Vatan Cad.\n    Elmacık Sk.No:2/1 Meram KONYA",
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        ),SizedBox(height: 28,),
+                        Row(
+                          children: [Icon(Icons.phone,color:Colors.white,size: 16,),SizedBox(width: 10),
+                            Text(
+                              "Tel: 0 (332) 322 68 85",
+                              style: TextStyle(color: Colors.white, fontSize: 15),
+                            ),
+
+                          ],
+                        ),SizedBox(height: 15,),
+                        Row(
+                          children: [Icon(Icons.phone_android,color:Colors.white,size: 16,),SizedBox(width: 10),
+                            Text(
+                              "Tel: 0 (332) 351 88 77",
+                              style: TextStyle(color: Colors.white, fontSize: 15),
+                            ),
+
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-              )
-            ],
-          ),
-        ],
+              ),
+            ),
+            Container(
+                width: size.width,
+                height: 60,
+                color: Color(0xFF012418),
+                child: Container(
+                  width: size.width,
+                  height: 60,
+                  color: Colors.black.withOpacity(0.8),
+                ))
+          ],
+        ),
       ),
     );
   }

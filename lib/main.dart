@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-
+/// Maliğin pc den eklendi
 
 /// Bekle bi teli yeniden başlatıyım
 /// açınca da kapanıyor direk

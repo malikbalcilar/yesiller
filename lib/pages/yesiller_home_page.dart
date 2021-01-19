@@ -64,7 +64,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                   child: Row(
                     children: [
                       Container(
-                        decoration: BoxDecoration(borderRadius: ),
+
                         height: 60,
                         width: 120,
                         child: Padding(

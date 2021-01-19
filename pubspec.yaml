@@ -21,6 +21,12 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
+  assets:
+    - assets/
+  fonts:
+    - family: "Clean"
+      fonts:
+        - asset: assets/fonts/Clean.ttf
 
   uses-material-design: true
 

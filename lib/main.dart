@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
+import 'pages/yesiller_home_page.dart';
 
-/// Maliğin pc den eklendi
 
-/// Bekle bi teli yeniden başlatıyım
-/// açınca da kapanıyor direk
-/// açsaneeee
+void main() {
+  runApp(const YesillerWebSite());
+}
+
+
+
+
 
 /// Material Application
 class YesillerWebSite extends StatelessWidget {
   ///
   const YesillerWebSite({Key key}) : super(key: key);
 
-
-
-  /// Malik Senin Aq - *Mehmet
-
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp(
+      theme: ThemeData(fontFamily: "Clean"),
+      title: "Yeşiller",
+      debugShowCheckedModeBanner: false,
+      home: const YesillerHomePage(),
+    );
   }
 }

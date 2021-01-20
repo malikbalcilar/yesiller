@@ -5,6 +5,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_page/responsive_page.dart';
+import 'package:yesiller/widgets/top_buttons.dart';
 
 /// Ana Sayfa
 class YesillerHomePage extends StatefulWidget {
@@ -21,7 +22,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
   @override
   void initState() {
 //    loadImages();
-    Timer.periodic(const Duration(seconds: 10), (timer) async {
+    Timer.periodic(const Duration(seconds: 3), (timer) async {
       await pageController.animateToPage(current + 1,
           duration: const Duration(milliseconds: 1700), curve: _curve);
 //      setState(() {
@@ -81,6 +82,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
   PageController pageController = PageController();
   int current = 0;
 
+  ///
   Widget gecisli({@required Size size}) {
     return Container(
         width: size.width,
@@ -141,6 +143,11 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
     });
   }
 
+
+
+
+
+
   @override
   Widget buildDesktop(BuildContext context) {
     _precachePicture(context);
@@ -188,14 +195,14 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                                 ],
                                     begin: Alignment.centerLeft,
                                     end: const Alignment(1, 0))),
-                            child: Container(margin: EdgeInsets.only(left: 15),
+                            child: Container(
+                              margin: const EdgeInsets.only(left: 15),
                               alignment: Alignment.centerLeft,
                               decoration: const BoxDecoration(
                                 color: Colors.transparent,
                               ),
                               height: 65,
                               width: 120,
-
                               child: Image.asset(
                                 "assets/logoyeni.png",
                                 fit: BoxFit.fitHeight,
@@ -203,52 +210,48 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                             ),
                           ),
 
+                          /// Üst Butonlar Buraya Taşındı
+                          const TopButtons()
 
-                         ///  ÜST BUTONLAR
-
-
-
-                          Container(
-                            width: size.width * 0.32,
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 45),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  FlatButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        "Anasayfa",
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 14),
-                                      )),
-                                  FlatButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        "Ürünler",
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 14),
-                                      )),
-                                  FlatButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        "Kurumsal",
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 14),
-                                      )),
-                                  FlatButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        "İletişim",
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 14),
-                                      )),
-                                ],
-                              ),
-                            ),
-                          ),
+                          ///  ÜST BUTONLAR
+                          // Padding(
+                          //   padding:
+                          //       const EdgeInsets.symmetric(horizontal: 45),
+                          //   child: Row(
+                          //     mainAxisAlignment:
+                          //         MainAxisAlignment.spaceBetween,
+                          //     children: [
+                          //       FlatButton(
+                          //           onPressed: () {},
+                          //           child: Text(
+                          //             "Anasayfa",
+                          //             style: TextStyle(
+                          //                 color: Colors.white, fontSize: 14),
+                          //           )),
+                          //       FlatButton(
+                          //           onPressed: () {},
+                          //           child: Text(
+                          //             "Ürünler",
+                          //             style: TextStyle(
+                          //                 color: Colors.white, fontSize: 14),
+                          //           )),
+                          //       FlatButton(
+                          //           onPressed: () {},
+                          //           child: Text(
+                          //             "Kurumsal",
+                          //             style: TextStyle(
+                          //                 color: Colors.white, fontSize: 14),
+                          //           )),
+                          //       FlatButton(
+                          //           onPressed: () {},
+                          //           child: Text(
+                          //             "İletişim",
+                          //             style: TextStyle(
+                          //                 color: Colors.white, fontSize: 14),
+                          //           )),
+                          //     ],
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),
@@ -261,74 +264,111 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
               height: 300,
               color: Color(0xFF012418),
 
-
-
-
               ///ALT TARAF ADRESLER
-
-
 
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Column(crossAxisAlignment: CrossAxisAlignment.center,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           "LARENDE ŞUBE",
-                          style: TextStyle(height: 5,color: Colors.white, fontSize: 18),
+                          style: TextStyle(
+                              height: 5, color: Colors.white, fontSize: 18),
                         ),
                         Text(
                           "Hacıfettah Mahallesi Furkandede Cad.\n            No:38/A Meram KONYA",
                           style: TextStyle(color: Colors.white, fontSize: 15),
-                        ),SizedBox(height: 28,),
+                        ),
+                        SizedBox(
+                          height: 28,
+                        ),
                         Row(
-                          children: [Icon(Icons.phone,color:Colors.white,size: 16,),SizedBox(width: 10),
+                          children: [
+                            Icon(
+                              Icons.phone,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                            SizedBox(width: 10),
                             Text(
                               "Tel: 0 (332) 351 88 77",
-                              style: TextStyle(color: Colors.white, fontSize: 15),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 15),
                             ),
-
                           ],
-                        ),SizedBox(height: 15,),
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
                         Row(
-                          children: [Icon(Icons.phone_android,color:Colors.white,size: 16,),SizedBox(width: 10),
+                          children: [
+                            Icon(
+                              Icons.phone_android,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                            SizedBox(width: 10),
                             Text(
                               "Tel: 0 (332) 351 88 77",
-                              style: TextStyle(color: Colors.white, fontSize: 15),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 15),
                             ),
-
                           ],
                         ),
                       ],
                     ),
-                    SizedBox(width: 60,),
-                    Column(crossAxisAlignment: CrossAxisAlignment.center,
+                    SizedBox(
+                      width: 60,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           "MERAM ŞUBE",
-                          style: TextStyle(height: 5,color: Colors.white, fontSize: 18),
+                          style: TextStyle(
+                              height: 5, color: Colors.white, fontSize: 18),
                         ),
                         Text(
                           "Toprak Sarnıç Mah. Büyük Vatan Cad.\n    Elmacık Sk.No:2/1 Meram KONYA",
                           style: TextStyle(color: Colors.white, fontSize: 15),
-                        ),SizedBox(height: 28,),
+                        ),
+                        SizedBox(
+                          height: 28,
+                        ),
                         Row(
-                          children: [Icon(Icons.phone,color:Colors.white,size: 16,),SizedBox(width: 10),
+                          children: [
+                            Icon(
+                              Icons.phone,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                            SizedBox(width: 10),
                             Text(
                               "Tel: 0 (332) 322 68 85",
-                              style: TextStyle(color: Colors.white, fontSize: 15),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 15),
                             ),
-
                           ],
-                        ),SizedBox(height: 15,),
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
                         Row(
-                          children: [Icon(Icons.phone_android,color:Colors.white,size: 16,),SizedBox(width: 10),
+                          children: [
+                            Icon(
+                              Icons.phone_android,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                            SizedBox(width: 10),
                             Text(
                               "Tel: 0 (332) 351 88 77",
-                              style: TextStyle(color: Colors.white, fontSize: 15),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 15),
                             ),
-
                           ],
                         ),
                       ],
@@ -354,11 +394,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
 
   @override
   Widget buildMobile(BuildContext context) {
-    return _scaffold(Container(
-      child: Column(
-        children: [ticAddress(), lojAddress(Colors.white)],
-      ),
-    ));
+    return buildDesktop(context);
   }
 
   @override

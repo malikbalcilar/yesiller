@@ -1,11 +1,10 @@
 import 'dart:async';
-import 'dart:typed_data';
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_page/responsive_page.dart';
-import 'package:yesiller/widgets/top_buttons.dart';
+import '../widgets/top_buttons.dart';
 
 /// Ana Sayfa
 class YesillerHomePage extends StatefulWidget {
@@ -37,17 +36,13 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
   }
 
   Widget ticAddress() {
-    return Container(
-      child: Text("Ticaret Adres"),
-    );
+    return Text("Ticaret Adres");
   }
 
   Widget lojAddress(Color color) {
-    return Container(
-      child: Text(
-        "Lojistik Adres",
-        style: TextStyle(color: color),
-      ),
+    return Text(
+      "Lojistik Adres",
+      style: TextStyle(color: color),
     );
   }
 
@@ -137,16 +132,11 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
     "odun.jpg": "Odun Kırmayı Iyı Biliriz"
   };
 
-  _precachePicture(BuildContext context) {
+  void _precachePicture(BuildContext context) {
     yaziler.keys.forEach((element) {
       precacheImage(AssetImage("assets/$element"), context);
     });
   }
-
-
-
-
-
 
   @override
   Widget buildDesktop(BuildContext context) {
@@ -262,7 +252,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
             Container(
               width: size.width,
               height: 300,
-              color: Color(0xFF012418),
+              color: const Color(0xFF012418),
 
               ///ALT TARAF ADRESLER
 
@@ -273,20 +263,20 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           "LARENDE ŞUBE",
                           style: TextStyle(
                               height: 5, color: Colors.white, fontSize: 18),
                         ),
-                        Text(
+                        const Text(
                           "Hacıfettah Mahallesi Furkandede Cad.\n            No:38/A Meram KONYA",
                           style: TextStyle(color: Colors.white, fontSize: 15),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 28,
                         ),
                         Row(
-                          children: [
+                          children: const [
                             Icon(
                               Icons.phone,
                               color: Colors.white,
@@ -300,11 +290,64 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         Row(
-                          children: [
+                          children: const [
+                            Icon(
+                              Icons.phone_android,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                            SizedBox(width: 10),
+                            Text(
+                              "Tel: 0 (332) 351 88 77",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 15),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      width: 60,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "MERAM ŞUBE",
+                          style: TextStyle(
+                              height: 5, color: Colors.white, fontSize: 18),
+                        ),
+                        const Text(
+                          "Toprak Sarnıç Mah. Büyük Vatan Cad.\n    Elmacık Sk.No:2/1 Meram KONYA",
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        ),
+                        const SizedBox(
+                          height: 28,
+                        ),
+                        Row(
+                          children: const [
+                            Icon(
+                              Icons.phone,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                            SizedBox(width: 10),
+                            Text(
+                              "Tel: 0 (332) 322 68 85",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 15),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        Row(
+                          children: const [
                             Icon(
                               Icons.phone_android,
                               color: Colors.white,
@@ -321,56 +364,29 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                       ],
                     ),
                     SizedBox(
-                      width: 60,
+                      width: 50,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
-                          "MERAM ŞUBE",
-                          style: TextStyle(
-                              height: 5, color: Colors.white, fontSize: 18),
-                        ),
-                        Text(
-                          "Toprak Sarnıç Mah. Büyük Vatan Cad.\n    Elmacık Sk.No:2/1 Meram KONYA",
-                          style: TextStyle(color: Colors.white, fontSize: 15),
-                        ),
-                        SizedBox(
-                          height: 28,
-                        ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Icon(
-                              Icons.phone,
-                              color: Colors.white,
-                              size: 16,
+                            Image.asset(
+                              "icons8-instagram.gif",
+                              height: 35,
+                              width: 35,
                             ),
-                            SizedBox(width: 10),
-                            Text(
-                              "Tel: 0 (332) 322 68 85",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 15),
+                            SizedBox(
+                              width: 15,
                             ),
+                            Image.asset("facebook.gif", height: 35, width: 35),
                           ],
                         ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.phone_android,
-                              color: Colors.white,
-                              size: 16,
-                            ),
-                            SizedBox(width: 10),
-                            Text(
-                              "Tel: 0 (332) 351 88 77",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 15),
-                            ),
-                          ],
-                        ),
+                        Text(
+                          "TAKİPTE KALIN",
+                          style: TextStyle(color: Colors.white),
+                        )
                       ],
                     ),
                   ],
@@ -378,14 +394,43 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
               ),
             ),
             Container(
-                width: size.width,
-                height: 60,
-                color: Color(0xFF012418),
+              width: size.width,
+              height: 60,
+              alignment: Alignment.centerRight,
+              color: const Color(0xFF012418),
+              child: Container(
+                color: Colors.black.withOpacity(0.8),
+                width: double.infinity,
+                height: double.infinity,
+                alignment: Alignment.centerRight,
                 child: Container(
-                  width: size.width,
                   height: 60,
-                  color: Colors.black.withOpacity(0.8),
-                ))
+                  width: 280,
+                  alignment: Alignment.centerRight,
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(colors: [
+                    Colors.white.withOpacity(0.5),
+                    Colors.transparent
+                  ], stops: const [
+                    0.53,
+                    1
+                  ], begin: Alignment.centerRight, end: Alignment.centerLeft)),
+                  child: Container(
+                    margin: const EdgeInsets.only(right: 15),
+                    alignment: Alignment.centerRight,
+                    decoration: const BoxDecoration(
+                      color: Colors.transparent,
+                    ),
+                    height: 60,
+                    width: 120,
+                    child: Image.asset(
+                      "assets/logoyeni.png",
+                      fit: BoxFit.fitHeight,
+                    ),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),

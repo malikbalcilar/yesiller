@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_page/responsive_page.dart';
+import '../widgets/address_widget.dart';
 import '../widgets/top_buttons.dart';
 
 /// Ana Sayfa
@@ -36,7 +37,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
   }
 
   Widget ticAddress() {
-    return Text("Ticaret Adres");
+    return const Text("Ticaret Adres");
   }
 
   Widget lojAddress(Color color) {
@@ -133,6 +134,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
   };
 
   void _precachePicture(BuildContext context) {
+    // ignore: avoid_function_literals_in_foreach_calls
     yaziler.keys.forEach((element) {
       precacheImage(AssetImage("assets/$element"), context);
     });
@@ -260,110 +262,26 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const Text(
-                          "LARENDE ŞUBE",
-                          style: TextStyle(
-                              height: 5, color: Colors.white, fontSize: 18),
-                        ),
-                        const Text(
-                          "Hacıfettah Mahallesi Furkandede Cad.\n            No:38/A Meram KONYA",
-                          style: TextStyle(color: Colors.white, fontSize: 15),
-                        ),
-                        const SizedBox(
-                          height: 28,
-                        ),
-                        Row(
-                          children: const [
-                            Icon(
-                              Icons.phone,
-                              color: Colors.white,
-                              size: 16,
-                            ),
-                            SizedBox(width: 10),
-                            Text(
-                              "Tel: 0 (332) 351 88 77",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 15),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          children: const [
-                            Icon(
-                              Icons.phone_android,
-                              color: Colors.white,
-                              size: 16,
-                            ),
-                            SizedBox(width: 10),
-                            Text(
-                              "Tel: 0 (332) 351 88 77",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 15),
-                            ),
-                          ],
-                        ),
+                    const AddressWidget(
+                      addressList: [
+                        "LARENDE ŞUBE",
+                        "Hacıfettah Mahallesi Furkandede Cad.\nNo:38/A Meram KONYA",
+                        "Tel: 0 (332) 351 88 77",
+                        "Tel: 0 (332) 351 88 77"
                       ],
                     ),
                     const SizedBox(
                       width: 60,
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const Text(
-                          "MERAM ŞUBE",
-                          style: TextStyle(
-                              height: 5, color: Colors.white, fontSize: 18),
-                        ),
-                        const Text(
-                          "Toprak Sarnıç Mah. Büyük Vatan Cad.\n    Elmacık Sk.No:2/1 Meram KONYA",
-                          style: TextStyle(color: Colors.white, fontSize: 15),
-                        ),
-                        const SizedBox(
-                          height: 28,
-                        ),
-                        Row(
-                          children: const [
-                            Icon(
-                              Icons.phone,
-                              color: Colors.white,
-                              size: 16,
-                            ),
-                            SizedBox(width: 10),
-                            Text(
-                              "Tel: 0 (332) 322 68 85",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 15),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          children: const [
-                            Icon(
-                              Icons.phone_android,
-                              color: Colors.white,
-                              size: 16,
-                            ),
-                            SizedBox(width: 10),
-                            Text(
-                              "Tel: 0 (332) 351 88 77",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 15),
-                            ),
-                          ],
-                        ),
+                    const AddressWidget(
+                      addressList: [
+                        "MERAM ŞUBE",
+                        "oprak Sarnıç Mah. Büyük Vatan Cad.\nElmacık Sk.No:2/1 Meram KONYA",
+                        "Tel: 0 (332) 322 68 85",
+                        "Tel: 0 (332) 351 88 77"
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 50,
                     ),
                     Column(
@@ -372,18 +290,26 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Image.asset(
-                              "icons8-instagram.gif",
-                              height: 35,
-                              width: 35,
+                            ClipRRect(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                              child: Image.asset(
+                                "icons8-instagram.gif",
+                                height: 35,
+                                width: 35,
+                              ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 15,
                             ),
-                            Image.asset("facebook.gif", height: 35, width: 35),
+                            ClipRRect(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(17.5)),
+                                child: Image.asset("facebook.gif",
+                                    height: 35, width: 35)),
                           ],
                         ),
-                        Text(
+                        const Text(
                           "TAKİPTE KALIN",
                           style: TextStyle(color: Colors.white),
                         )
@@ -444,10 +370,8 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
 
   @override
   Widget buildWideMobileOrTablet(BuildContext context) {
-    return _scaffold(Container(
-      child: Column(
-        children: [ticAddress(), lojAddress(Colors.white)],
-      ),
+    return _scaffold(Column(
+      children: [ticAddress(), lojAddress(Colors.white)],
     ));
   }
 

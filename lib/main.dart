@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:yesiller/pages/yesiller_business_page.dart';
-import 'package:yesiller/pages/yesiller_contact_page.dart';
-import 'package:yesiller/pages/yesiller_products_page.dart';
+
+import 'pages/yesiller_business_page.dart';
+import 'pages/yesiller_contact_page.dart';
 import 'pages/yesiller_home_page.dart';
+import 'pages/yesiller_products_page.dart';
 
 void main() {
   runApp(const YesillerWebSite());

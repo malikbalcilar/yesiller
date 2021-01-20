@@ -41,10 +41,9 @@ class _TopButtonsState extends State<TopButtons> {
 
   bool overlayAdded = false;
 
-  _addOverlay() async {
+  Future<void> _addOverlay() async {
     await Future.delayed(const Duration(milliseconds: 100));
     var pos = _pos("Kurumsal");
-    var _buttonW = 80.0;
     print(pos);
 
     var overl = OverlayEntry(
@@ -80,7 +79,7 @@ class _TopButtonsState extends State<TopButtons> {
                     width: 150,
                     child: Builder(
                       builder: (c) {
-                        return Text("AAAAA aAAAAa AAAA");
+                        return const Text("AAAAA aAAAAa AAAA");
                       },
                     ),
                     color: Colors.red,
@@ -97,7 +96,6 @@ class _TopButtonsState extends State<TopButtons> {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
     _addOverlay();
     return Padding(
       /// Butonların bulunduğu kısmın sağ ve soldan uzaklığı
@@ -129,7 +127,7 @@ class _TopButtonsState extends State<TopButtons> {
                     //   _hover = e.key;
                     // });
                   },
-                  child: FlatButton(
+                  child: TextButton(
                       onPressed: () {
                         Navigator.pushNamed(context, e.value);
                       },

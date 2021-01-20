@@ -178,13 +178,13 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                             decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                     colors: [
-                                  Colors.white.withOpacity(0.6),
-                                  Colors.transparent
-                                ],
+                                      Colors.white.withOpacity(0.6),
+                                      Colors.transparent
+                                    ],
                                     stops: const [
-                                  0.3,
-                                  1
-                                ],
+                                      0.3,
+                                      1
+                                    ],
                                     begin: Alignment.centerLeft,
                                     end: const Alignment(1, 0))),
                             child: Container(
@@ -296,7 +296,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                           children: [
                             ClipRRect(
                               borderRadius:
-                                  const BorderRadius.all(Radius.circular(10)),
+                              const BorderRadius.all(Radius.circular(10)),
                               child: Image.asset(
                                 "icons8-instagram.gif",
                                 height: 35,
@@ -321,7 +321,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                           width: 125,
 
                           decoration: BoxDecoration(color: Colors.white,
-                              boxShadow: [BoxShadow(spreadRadius: 1,blurRadius:5,color: Colors.greenAccent,offset:Offset(1,2) )],),
+                            boxShadow: [BoxShadow(spreadRadius: 1,blurRadius:5,color: Colors.greenAccent,offset:Offset(1,2) )],),
                         ),
                         SizedBox(
                           height: 25,
@@ -353,12 +353,12 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                   alignment: Alignment.centerRight,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(colors: [
-                    Colors.white.withOpacity(0.5),
-                    Colors.transparent
-                  ], stops: const [
-                    0.53,
-                    1
-                  ], begin: Alignment.centerRight, end: Alignment.centerLeft)),
+                        Colors.white.withOpacity(0.5),
+                        Colors.transparent
+                      ], stops: const [
+                        0.53,
+                        1
+                      ], begin: Alignment.centerRight, end: Alignment.centerLeft)),
                   child: Container(
                     margin: const EdgeInsets.only(right: 15),
                     alignment: Alignment.centerRight,

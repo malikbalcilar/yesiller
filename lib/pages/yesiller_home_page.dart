@@ -261,11 +261,12 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const AddressWidget(
                       addressList: [
                         "LARENDE ŞUBE",
-                        "Hacıfettah Mahallesi Furkandede Cad.\nNo:38/A Meram KONYA",
+                        "Hacıfettah Mahallesi Furgandede Cad.\nNo:38/A Meram KONYA",
                         "Tel: 0 (332) 351 88 77",
                         "Tel: 0 (332) 351 88 77"
                       ],
@@ -276,17 +277,20 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                     const AddressWidget(
                       addressList: [
                         "MERAM ŞUBE",
-                        "oprak Sarnıç Mah. Büyük Vatan Cad.\nElmacık Sk.No:2/1 Meram KONYA",
+                        "Toprak Sarnıç Mah. Büyük Vatan Cad.\nElmacık Sk.No:2/1 Meram KONYA",
                         "Tel: 0 (332) 322 68 85",
                         "Tel: 0 (332) 351 88 77"
                       ],
                     ),
                     const SizedBox(
-                      width: 50,
+                      width: 400,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        SizedBox(
+                          height: 120,
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -303,22 +307,36 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                               width: 15,
                             ),
                             ClipRRect(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(17.5)),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(17.5)),
                                 child: Image.asset("facebook.gif",
                                     height: 35, width: 35)),
                           ],
                         ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          height: 1,
+                          width: 125,
+
+                          decoration: BoxDecoration(color: Colors.white,
+                              boxShadow: [BoxShadow(spreadRadius: 1,blurRadius:5,color: Colors.greenAccent,offset:Offset(1,2) )],),
+                        ),
+                        SizedBox(
+                          height: 25,
+                        ),
                         const Text(
                           "TAKİPTE KALIN",
-                          style: TextStyle(color: Colors.white),
-                        )
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
                       ],
                     ),
                   ],
                 ),
               ),
             ),
+
             Container(
               width: size.width,
               height: 60,

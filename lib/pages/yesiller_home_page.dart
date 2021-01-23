@@ -4,6 +4,8 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_page/responsive_page.dart';
+import 'package:yesiller/src/addresses.dart';
+import 'package:yesiller/widgets/kaliparka.dart';
 import '../widgets/address_widget.dart';
 import '../widgets/top_buttons.dart';
 
@@ -150,8 +152,8 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
 //    }
 
     var size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: SingleChildScrollView(
+    return KalipArka(
+      child: SingleChildScrollView(
         child: Column(
           children: [
             Stack(
@@ -178,13 +180,13 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                             decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                     colors: [
-                                      Colors.white.withOpacity(0.6),
-                                      Colors.transparent
-                                    ],
+                                  Colors.white.withOpacity(0.6),
+                                  Colors.transparent
+                                ],
                                     stops: const [
-                                      0.3,
-                                      1
-                                    ],
+                                  0.3,
+                                  1
+                                ],
                                     begin: Alignment.centerLeft,
                                     end: const Alignment(1, 0))),
                             child: Container(
@@ -254,127 +256,90 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
             Container(
               width: size.width,
               height: 300,
-              color: const Color(0xFF012418),
 
               ///ALT TARAF ADRESLER
-
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    const AddressWidget(
-                      addressList: [
-                        "LARENDE ŞUBE",
-                        "Hacıfettah Mahallesi Furgandede Cad.\nNo:38/A Meram KONYA",
-                        "Tel: 0 (332) 351 88 77",
-                        "Tel: 0 (332) 351 88 77"
-                      ],
+                    Expanded(
+                      flex: 3,
+                      child:  AddressWidget(
+                        addressList: address1,
+                      ),
                     ),
-                    const SizedBox(
-                      width: 60,
+//                    const SizedBox(
+//                      width: 60,
+//                    ),
+                    Expanded(
+                      flex: 3,
+                      child:  AddressWidget(
+                        addressList: address2,
+                      ),
                     ),
-                    const AddressWidget(
-                      addressList: [
-                        "MERAM ŞUBE",
-                        "Toprak Sarnıç Mah. Büyük Vatan Cad.\nElmacık Sk.No:2/1 Meram KONYA",
-                        "Tel: 0 (332) 322 68 85",
-                        "Tel: 0 (332) 351 88 77"
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 400,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: 120,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            ClipRRect(
-                              borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
-                              child: Image.asset(
-                                "icons8-instagram.gif",
-                                height: 35,
-                                width: 35,
+//                    const SizedBox(
+//                      width: 400,
+//                    ),
+                    Expanded(
+                      flex: 4,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ClipRRect(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(11)),
+                                child: Image.asset(
+                                  "icons8-instagram.gif",
+                                  height: 40,
+                                  width: 40,
+                                ),
                               ),
+                              const SizedBox(
+                                width: 15,
+                              ),
+                              ClipRRect(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(20)),
+                                  child: Image.asset("facebook.gif",
+                                      height: 40, width: 40)),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            height: 1,
+                            width: 125,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    spreadRadius: 1,
+                                    blurRadius: 5,
+                                    color: Colors.greenAccent,
+                                    offset: Offset(1, 2))
+                              ],
                             ),
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            ClipRRect(
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(17.5)),
-                                child: Image.asset("facebook.gif",
-                                    height: 35, width: 35)),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          height: 1,
-                          width: 125,
-
-                          decoration: BoxDecoration(color: Colors.white,
-                            boxShadow: [BoxShadow(spreadRadius: 1,blurRadius:5,color: Colors.greenAccent,offset:Offset(1,2) )],),
-                        ),
-                        SizedBox(
-                          height: 25,
-                        ),
-                        const Text(
-                          "TAKİPTE KALIN",
-                          style: TextStyle(color: Colors.white, fontSize: 18),
-                        ),
-                      ],
+                          ),
+                          SizedBox(
+                            height: 25,
+                          ),
+                          const Text(
+                            "TAKİPTE KALIN",
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ),
             ),
-
-            Container(
-              width: size.width,
-              height: 60,
-              alignment: Alignment.centerRight,
-              color: const Color(0xFF012418),
-              child: Container(
-                color: Colors.black.withOpacity(0.8),
-                width: double.infinity,
-                height: double.infinity,
-                alignment: Alignment.centerRight,
-                child: Container(
-                  height: 60,
-                  width: 280,
-                  alignment: Alignment.centerRight,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: [
-                        Colors.white.withOpacity(0.5),
-                        Colors.transparent
-                      ], stops: const [
-                        0.53,
-                        1
-                      ], begin: Alignment.centerRight, end: Alignment.centerLeft)),
-                  child: Container(
-                    margin: const EdgeInsets.only(right: 15),
-                    alignment: Alignment.centerRight,
-                    decoration: const BoxDecoration(
-                      color: Colors.transparent,
-                    ),
-                    height: 60,
-                    width: 120,
-                    child: Image.asset(
-                      "assets/logoyeni.png",
-                      fit: BoxFit.fitHeight,
-                    ),
-                  ),
-                ),
-              ),
-            )
           ],
         ),
       ),

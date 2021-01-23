@@ -17,7 +17,8 @@ class YesillerWebSite extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(fontFamily: "Clean"),
+      theme: ThemeData(fontFamily: "Clean",
+      ),
       title: "Yeşiller",
       debugShowCheckedModeBanner: false,
       home: const YesillerHomePage(),

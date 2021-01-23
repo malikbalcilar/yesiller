@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 ///
 class AddressWidget extends StatelessWidget {
@@ -27,38 +28,86 @@ class AddressWidget extends StatelessWidget {
         const SizedBox(
           height: 28,
         ),
-        Row(
-          children: [
-            const Icon(
-              Icons.phone,
-              color: Colors.white,
-              size: 16,
-            ),
-            const SizedBox(width: 10),
-            Text(
-              addressList[2],
-              style: const TextStyle(color: Colors.white, fontSize: 15),
-            ),
-          ],
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 40),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkResponse(
+                onTap: () {
+                  launch("tel://905530635063");
+                },
+                child: const Icon(
+                  Icons.phone,
+                  color: Colors.white,
+                  size: 16,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Container(
+                alignment: Alignment.center,
+                width: telTextWidth,
+                child: Text(
+                  addressList[2],
+                  style: const TextStyle(color: Colors.white, fontSize: 15),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 40),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(
+                Icons.phone_android,
+                color: Colors.white,
+                size: 16,
+              ),
+              const SizedBox(width: 10),
+              Container(
+                alignment: Alignment.center,
+                width: telTextWidth,
+                child: Text(
+                  addressList[3],
+                  style: const TextStyle(color: Colors.white, fontSize: 15),
+                ),
+              ),
+            ],
+          ),
         ),
         const SizedBox(
           height: 15,
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Icon(
-              Icons.phone_android,
+              Icons.home,
               color: Colors.white,
               size: 16,
             ),
             const SizedBox(width: 10),
-            Text(
-              addressList[3],
-              style: const TextStyle(color: Colors.white, fontSize: 15),
+            Container(
+              alignment: Alignment.center,
+              width: telTextWidth,
+              child: Text(
+                addressList[4],
+                style: const TextStyle(color: Colors.white, fontSize: 15),
+              ),
             ),
           ],
         ),
       ],
     );
   }
+
+
+  final double telTextWidth = 200;
+
+
 }

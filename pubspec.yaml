@@ -27,9 +27,14 @@ flutter:
   assets:
     - assets/
   fonts:
-    - family: "Clean"
+    - family: Clean
       fonts:
-        - asset: assets/fonts/Clean.ttf
+        - asset: assets/fonts/SairaSemiCondensed-ExtraLight.ttf
+          weight: 500
+        - asset: assets/fonts/SairaSemiCondensed-SemiBold.ttf
+          weight: 900
+        - asset: assets/fonts/SairaSemiCondensed-Regular.ttf
+          weight: 700
 
   uses-material-design: true
 

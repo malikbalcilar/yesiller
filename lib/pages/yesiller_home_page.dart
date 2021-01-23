@@ -24,9 +24,9 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
   @override
   void initState() {
 //    loadImages();
-    Timer.periodic(const Duration(seconds: 3), (timer) async {
+    Timer.periodic(const Duration(seconds: 6), (timer) async {
       await pageController.animateToPage(current + 1,
-          duration: const Duration(milliseconds: 1700), curve: _curve);
+          duration: const Duration(milliseconds: 1850), curve: _curve);
 //      setState(() {
 //        if (current == -1) {
 //          current = 1;
@@ -108,7 +108,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                   curve: _curve,
                   child: AnimatedOpacity(
                     curve: _curve,
-                    duration: const Duration(milliseconds: 1500),
+                    duration: const Duration(milliseconds: 1900),
                     opacity: current == i ? 1 : 0,
                     child: Text(
                       e.value,
@@ -129,10 +129,10 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
   }
 
   Map<String, String> yaziler = {
-    "kömür.jpg": "Burda Kömür Var",
-    "kömürel.jpg": "Kömürlü Adam Bu Aq",
-    "orman.jpg": "Ağaç Dikmeden Yağmur \nDuasına Çıkılmaz",
-    "odun.jpg": "Odun Kırmayı Iyı Biliriz"
+    "kömür.jpg": "Yüksek Kalori\nVerimli Enerji",
+    "kömürel.jpg": "Isınmanın Değerli Hali",
+    "orman.jpg": "Sürdürülebilir Yaşam\nYaşanılabilir Çevre",
+    "odun.jpg": "Çevre Dostu Kömür"
   };
 
   void _precachePicture(BuildContext context) {

@@ -14,10 +14,28 @@ class YesillerWebSite extends StatelessWidget {
   ///
   const YesillerWebSite({Key key}) : super(key: key);
 
+
+
+
+  ///appbar ayarlanacak
+  ///facebook,instagram iconlarına tıklanınca sayfalara gidecek
+  ///telefonlara basınca arama yapılsın
+  ///ürünler kısımları dinamik yapılacak
+  ///kurumsal butonu ayarlanacak
+  ///iletişim formu gönder butonu
+  ///hesaplar girilecek
+  ///MEMEEEEEEEEET T T T T T T T T T T T T T T T T T T T T
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(fontFamily: "Clean",
+      theme: ThemeData(
+
+        fontFamily: "Clean",
       ),
       title: "Yeşiller",
       debugShowCheckedModeBanner: false,

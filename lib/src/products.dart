@@ -3,48 +3,48 @@ List<Map<String, dynamic>> products = [
     "asset": "assets/ceviz.jpg",
     "title": "Ceviz Kömür",
     "properties": {
-      "Kullanım Alanları":
-          "25 kg’lık torbalarda satışa sunulmaktadır.",
-      "Kullanım Alanları1":
-          "Soba ve kalorifer kazanlarında kullanılmakta",
-      "Kullanım Alanları2":
-          "Soba ve kalorifer kazanlarında kullanılmakta ve 25 kg’lık torbalarda satışa sunulmaktadır."
+      "Ebat": "22 mm - 80 mm",
+      "Kalori": "4000 kkal/kg - 7300 kkal/kg",
+      "Kullanım Alanları": "Soba ve kalorifer kazanlarında kullanılmaktadır."
     }
   },
   {
-    "asset": "assets/ceviz.jpg",
-    "title": "Ceviz Kömür2",
+    "asset": "assets/fındık.png",
+    "title": "Fındık Kömür",
     "properties": {
+      "Ebat": "12 mm - 22 mm",
+      "Kalori": "4800 kkal/kg - 8000 kkal/kg",
       "Kullanım Alanları":
-          "Soba ve kalorifer kazanlarında kullanılmakta ve 25 kg’lık torbalarda satışa sunulmaktadır.",
-      "Kullanım Alanları1":
-          "Soba ve kalorifer kazanlarında kullanılmakta ve 25 kg’lık torbalarda satışa sunulmaktadır.",
-      "Kullanım Alanları2":
-          "Soba ve kalorifer kazanlarında kullanılmakta ve 25 kg’lık torbalarda satışa sunulmaktadır."
+          "Kat kaloriferlerinde ve fabrikalarda kullanılmaktadır."
     }
   },
   {
-    "asset": "assets/ceviz.jpg",
-    "title": "Ceviz Kömür3",
+    "asset": "assets/limon.png",
+    "title": "Limon Kömür",
     "properties": {
-      "Kullanım Alanları":
-          "Soba ve kalorifer kazanlarında kullanılmakta ve 25 kg’lık torbalarda satışa sunulmaktadır.",
-      "Kullanım Alanları1":
-          "Soba ve kalorifer kazanlarında kullanılmakta ve 25 kg’lık torbalarda satışa sunulmaktadır.",
-      "Kullanım Alanları2":
-          "Soba ve kalorifer kazanlarında kullanılmakta ve 25 kg’lık torbalarda satışa sunulmaktadır."
+      "Ebat": "40 mm - 80 mm",
+      "Kalori": "4800 kkal/kg - 8000 kkal/kg",
+      "Kullanım Alanları": "Soba ve kalorifer kazanlarında kullanılır."
     }
   },
   {
-    "asset": "assets/ceviz.jpg",
-    "title": "Ceviz Kömür4",
+    "asset": "assets/portakal.png",
+    "title": "Portakal Kömür",
     "properties": {
+      "Ebat": "80 mm - 100 mm",
+      "Kalori": "4800 kkal/kg - 8000 kkal/kg",
       "Kullanım Alanları":
-          "Soba ve kalorifer kazanlarında kullanılmakta ve 25 kg’lık torbalarda satışa sunulmaktadır.",
-      "Kullanım Alanları1":
-          "Soba ve kalorifer kazanlarında kullanılmakta ve 25 kg’lık torbalarda satışa sunulmaktadır.",
-      "Kullanım Alanları2":
-          "Soba ve kalorifer kazanlarında kullanılmakta ve 25 kg’lık torbalarda satışa sunulmaktadır."
+          "Kalorifer kazanlarında ve merkezi ısıtma sistemlerinde kullanılır."
+    }
+  },
+  {
+    "asset": "assets/karpuz.png",
+    "title": "Karpuz Kömür",
+    "properties": {
+      "Ebat": "100 mm ve üzeri",
+      "Kalori": "4800 kkal/kg - 8000 kkal/kg",
+      "Kullanım Alanları":
+          "Kalorifer kazanlarında ve merkezi ısıtma sistemlerinde kullanılır."
     }
   }
 ];

@@ -21,65 +21,73 @@ class _YesillerProductsPageState extends State<YesillerProductsPage> {
   @override
   Widget build(BuildContext context) {
     return KalipArka(
+      yatay: false,
       child: Container(
         color: Colors.white,
         child: SingleChildScrollView(
           child: Column(
             children: products
                 .map((product) => Padding(
-                      padding: const EdgeInsets.only(bottom: 30),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Image.asset(
-                              product["asset"],
+                      padding: const EdgeInsets.only(bottom: 0),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 40),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Container(height: 500,
+                                width: 500,
+                                child: Image.asset(
+                                  product["asset"],
+                                ),
+                              ),
                             ),
-                          ),
-                          Expanded(
-                            child: Column(
-                              children: [
-                                Text(
-                                  product["title"],
-                                  style: TextStyle(
-                                      fontFamily: "Clean",
-                                      fontWeight: FontWeight.w900,
-                                      fontSize: 50,
-                                      color: Color(0xFF094c06)),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 40),
-                                  child: Container(
-                                    color: Color(0xFF192e1b),
-                                    height: 1.5,
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    product["title"],
+                                    style: TextStyle(
+                                        fontFamily: "Clean",
+                                        fontWeight: FontWeight.w900,
+                                        fontSize: 50,
+                                        color: Color(0xFF094c06)),
                                   ),
-                                ),
-                                for (var _prop in product["properties"].entries)
                                   Padding(
-                                    padding: const EdgeInsets.only(bottom: 15),
-                                    child: RichText(
-                                        text: TextSpan(
-                                            text: "${_prop.key}:",
-                                            style: TextStyle(
-                                                fontFamily: "Clean",
-                                                fontWeight: FontWeight.w700,
-                                                fontSize: 33,
-                                                color: Color(0xFF094c06)),
-                                            children: <TextSpan>[
-                                          TextSpan(
-                                              text: _prop.value,
+                                    padding:
+                                        const EdgeInsets.symmetric(vertical: 30),
+                                    child: Container(
+                                      color: Color(0xFF192e1b),
+                                      height: 1.5,
+                                    ),
+                                  ),
+                                  for (var _prop in product["properties"].entries)
+                                    Padding(
+                                      padding: const EdgeInsets.only(bottom: 15),
+                                      child: RichText(
+                                          text: TextSpan(
+                                              text: "${_prop.key}:",
                                               style: TextStyle(
                                                   fontFamily: "Clean",
-                                                  fontSize: 32,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black))
-                                        ])),
-                                  ),
-                              ],
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 33,
+                                                  color: Color(0xFF094c06)),
+                                              children: <TextSpan>[
+                                            TextSpan(
+                                                text: _prop.value,
+                                                style: TextStyle(
+                                                    fontFamily: "Clean",
+                                                    fontSize: 32,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black))
+                                          ])),
+                                    ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ))
                 .toList(),

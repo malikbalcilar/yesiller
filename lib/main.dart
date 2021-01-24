@@ -19,10 +19,12 @@ class YesillerWebSite extends StatelessWidget {
 
   ///appbar ayarlanacak
   ///facebook,instagram iconlarına tıklanınca sayfalara gidecek
-  ///telefonlara basınca arama yapılsın
+  ///facebook : https://www.facebook.com/yesillergroup/
+  ///instagram : https://www.instagram.com/yesillerkomur/?hl=tr
+  ///telefonlara basınca her numara için farklı arama yapılsın
   ///ürünler kısımları dinamik yapılacak
   ///kurumsal butonu ayarlanacak
-  ///iletişim formu gönder butonu
+  ///iletişim formu gönder butonu bağlanacak mail adresi : satisyesiller@gmail.com
   ///hesaplar girilecek
   ///MEMEEEEEEEEET T T T T T T T T T T T T T T T T T T T T
 

@@ -49,7 +49,7 @@ class AddressWidget extends StatelessWidget {
                 width: telTextWidth,
                 child: Text(
                   addressList[2],
-                  style: const TextStyle(color: Colors.white, fontSize: 15),
+                  style: const TextStyle(color: Colors.white, fontSize: 15,decoration: TextDecoration.underline),
                 ),
               ),
             ],
@@ -64,7 +64,7 @@ class AddressWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Icon(
-                Icons.phone_android,
+                Icons.mail,
                 color: Colors.white,
                 size: 16,
               ),
@@ -74,34 +74,14 @@ class AddressWidget extends StatelessWidget {
                 width: telTextWidth,
                 child: Text(
                   addressList[3],
-                  style: const TextStyle(color: Colors.white, fontSize: 15),
+                  style: const TextStyle(color: Colors.white, fontSize: 15,decoration: TextDecoration.underline),
                 ),
               ),
             ],
           ),
         ),
-        const SizedBox(
-          height: 15,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              Icons.home,
-              color: Colors.white,
-              size: 16,
-            ),
-            const SizedBox(width: 10),
-            Container(
-              alignment: Alignment.center,
-              width: telTextWidth,
-              child: Text(
-                addressList[4],
-                style: const TextStyle(color: Colors.white, fontSize: 15),
-              ),
-            ),
-          ],
-        ),
+
+
       ],
     );
   }

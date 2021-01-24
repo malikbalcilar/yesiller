@@ -4,7 +4,9 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_page/responsive_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:yesiller/src/addresses.dart';
+import 'package:yesiller/src/tab_controller.dart';
 import 'package:yesiller/widgets/kaliparka.dart';
 import '../widgets/address_widget.dart';
 import '../widgets/top_buttons.dart';
@@ -12,7 +14,10 @@ import '../widgets/top_buttons.dart';
 /// Ana Sayfa
 class YesillerHomePage extends StatefulWidget {
   ///
-  const YesillerHomePage({Key key}) : super(key: key);
+  const YesillerHomePage({Key key, this.tabControllerMy}) : super(key: key);
+
+  ///
+  final TabControllerMy tabControllerMy;
 
   @override
   _YesillerHomePageState createState() => _YesillerHomePageState();
@@ -25,8 +30,10 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
   void initState() {
 //    loadImages();
     Timer.periodic(const Duration(seconds: 6), (timer) async {
-      await pageController.animateToPage(current + 1,
-          duration: const Duration(milliseconds: 1850), curve: _curve);
+      if (widget.tabControllerMy.currentPage == 0 && pageController.hasClients) {
+        await pageController.animateToPage(current + 1,
+            duration: const Duration(milliseconds: 1850), curve: _curve);
+      }
 //      setState(() {
 //        if (current == -1) {
 //          current = 1;
@@ -37,45 +44,6 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
     });
     super.initState();
   }
-
-  Widget ticAddress() {
-    return const Text("Ticaret Adres");
-  }
-
-  Widget lojAddress(Color color) {
-    return Text(
-      "Lojistik Adres",
-      style: TextStyle(color: color),
-    );
-  }
-
-  Widget _scaffold(Widget body) {
-    return Scaffold(
-      body: body,
-    );
-  }
-
-//  Map<String, Uint8List> _bytes = {};
-//
-//  Future<void> loadImages() async {
-//    for (var a in yaziler.keys) {
-//      var comp = Completer();
-//
-//      AssetImage("assets/$a")
-//          .resolve(ImageConfiguration.empty)
-//          .addListener(ImageStreamListener((i, b) async {
-//        var c = await i.image.toByteData();
-//
-//        comp.complete(c.buffer.asUint8List());
-//      }));
-//      _bytes[a] = await comp.future;
-//      setState(() {
-//
-//      });
-//    }
-//
-//    return;
-//  }
 
   PageController pageController = PageController();
   int current = 0;
@@ -156,102 +124,8 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Stack(
-              alignment: Alignment.topCenter,
-              children: [
-                gecisli(
-                  size: Size(size.width, 650),
-                ),
-                Positioned(
-                  left: 0,
-                  top: 0,
-                  height: 65,
-                  width: size.width,
-                  child: ClipRect(
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            height: 65,
-                            width: 300,
-                            alignment: Alignment.centerLeft,
-                            decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                    colors: [
-                                  Colors.white.withOpacity(0.6),
-                                  Colors.transparent
-                                ],
-                                    stops: const [
-                                  0.3,
-                                  1
-                                ],
-                                    begin: Alignment.centerLeft,
-                                    end: const Alignment(1, 0))),
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 15),
-                              alignment: Alignment.centerLeft,
-                              decoration: const BoxDecoration(
-                                color: Colors.transparent,
-                              ),
-                              height: 65,
-                              width: 120,
-                              child: Image.asset(
-                                "assets/logoyeni.png",
-                                fit: BoxFit.fitHeight,
-                              ),
-                            ),
-                          ),
-
-                          /// Üst Butonlar Buraya Taşındı
-                          const TopButtons()
-
-                          ///  ÜST BUTONLAR
-                          // Padding(
-                          //   padding:
-                          //       const EdgeInsets.symmetric(horizontal: 45),
-                          //   child: Row(
-                          //     mainAxisAlignment:
-                          //         MainAxisAlignment.spaceBetween,
-                          //     children: [
-                          //       FlatButton(
-                          //           onPressed: () {},
-                          //           child: Text(
-                          //             "Anasayfa",
-                          //             style: TextStyle(
-                          //                 color: Colors.white, fontSize: 14),
-                          //           )),
-                          //       FlatButton(
-                          //           onPressed: () {},
-                          //           child: Text(
-                          //             "Ürünler",
-                          //             style: TextStyle(
-                          //                 color: Colors.white, fontSize: 14),
-                          //           )),
-                          //       FlatButton(
-                          //           onPressed: () {},
-                          //           child: Text(
-                          //             "Kurumsal",
-                          //             style: TextStyle(
-                          //                 color: Colors.white, fontSize: 14),
-                          //           )),
-                          //       FlatButton(
-                          //           onPressed: () {},
-                          //           child: Text(
-                          //             "İletişim",
-                          //             style: TextStyle(
-                          //                 color: Colors.white, fontSize: 14),
-                          //           )),
-                          //     ],
-                          //   ),
-                          // ),
-                        ],
-                      ),
-                    ),
-                  ),
-                )
-              ],
+            gecisli(
+              size: Size(size.width, 650),
             ),
             Container(
               width: size.width,
@@ -265,22 +139,16 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                   children: [
                     Expanded(
                       flex: 3,
-                      child:  AddressWidget(
+                      child: AddressWidget(
                         addressList: address1,
                       ),
                     ),
-//                    const SizedBox(
-//                      width: 60,
-//                    ),
                     Expanded(
                       flex: 3,
-                      child:  AddressWidget(
+                      child: AddressWidget(
                         addressList: address2,
                       ),
                     ),
-//                    const SizedBox(
-//                      width: 400,
-//                    ),
                     Expanded(
                       flex: 4,
                       child: Column(
@@ -290,32 +158,46 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              ClipRRect(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(11)),
-                                child: Image.asset(
-                                  "icons8-instagram.gif",
-                                  height: 40,
-                                  width: 40,
+                              InkResponse(
+                                onTap: () async {
+                                  if (await canLaunch("https://www.instagram.com/yesillerkomur/?hl=tr")) {
+                                    launch("https://www.instagram.com/yesillerkomur/?hl=tr");
+                                  }
+                                },
+                                child: ClipRRect(
+                                  borderRadius:
+                                      const BorderRadius.all(Radius.circular(11)),
+                                  child: Image.asset(
+                                    "icons8-instagram.gif",
+                                    height: 40,
+                                    width: 40,
+                                  ),
                                 ),
                               ),
                               const SizedBox(
                                 width: 15,
                               ),
-                              ClipRRect(
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(20)),
-                                  child: Image.asset("facebook.gif",
-                                      height: 40, width: 40)),
+                              InkWell(
+                                onTap: () async {
+                                  if (await canLaunch("https://www.facebook.com/yesillergroup/")) {
+                                    launch("https://www.facebook.com/yesillergroup/");
+                                  }
+                                },
+                                child: ClipRRect(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(20)),
+                                    child: Image.asset("facebook.gif",
+                                        height: 40, width: 40)),
+                              ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Container(
                             height: 1,
                             width: 125,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.white,
                               boxShadow: [
                                 BoxShadow(
@@ -326,7 +208,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                               ],
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 25,
                           ),
                           const Text(
@@ -353,9 +235,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
 
   @override
   Widget buildWideMobileOrTablet(BuildContext context) {
-    return _scaffold(Column(
-      children: [ticAddress(), lojAddress(Colors.white)],
-    ));
+    return buildDesktop(context);
   }
 
   @override

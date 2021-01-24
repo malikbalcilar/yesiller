@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:yesiller/src/tab_controller.dart';
 
 ///
 class TopButtons extends StatefulWidget {
@@ -56,12 +57,12 @@ class _TopButtonsState extends State<TopButtons> {
             left: pos.dx,
             top: 60,
             child: MouseRegion(
-              onExit: (e){
+              onExit: (e) {
                 setState(() {
                   _hover = "NaN";
                 });
               },
-              onHover: (e){
+              onHover: (e) {
                 setState(() {
                   _hover = "Kurumsal";
                 });
@@ -94,49 +95,45 @@ class _TopButtonsState extends State<TopButtons> {
     Overlay.of(context).insert(overl);
   }
 
+  int current;
+
+  TabControllerMy tabControllerMy = TabControllerMy();
+
+  @override
+  void initState() {
+    current = tabControllerMy.currentPage;
+    tabControllerMy.addListener(() {
+      setState(() {
+        current = tabControllerMy.currentPage;
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    _addOverlay();
     return Padding(
       /// Butonların bulunduğu kısmın sağ ve soldan uzaklığı
       padding: const EdgeInsets.symmetric(horizontal: 45),
       child: Row(
         children: _categories.entries
             .map(
-              (e) => Padding(
+              (e) => Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: current == 1 ? Colors.transparent : Colors.transparent),
                 key: _keys[e.key],
-                padding: const EdgeInsets.symmetric(horizontal: 15 , vertical: 5),
-                child: MouseRegion(
-                  onEnter: (po) {
-                    print(po.position);
-                    setState(() {
-                      _hover = e.key;
-                    });
-                  },
-                  onExit: (ee) {
-                    print("exit");
-                    // Navigator.pop(context);
-
-                    setState(() {
-                      _hover = "nAn";
-                    });
-                  },
-                  onHover: (po) {
-                    // print(po.position);
-                    // setState(() {
-                    //   _hover = e.key;
-                    // });
-                  },
-                  child: TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, e.value);
-                      },
-                      child: Text(
-                        e.key,
-                        style:
-                            const TextStyle(color: Colors.white, fontSize: 14),
-                      )),
-                ),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                child: TextButton(
+                    onPressed: () {
+                      TabControllerMy()
+                          .jumpTo(_categories.keys.toList().indexOf(e.key));
+                    },
+                    child: Text(
+                      e.key,
+                      style: const TextStyle(color: Colors.white, fontSize: 14),
+                    )),
               ),
             )
             .toList(),

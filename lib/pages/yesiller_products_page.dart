@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_page/responsive_page.dart';
 import 'package:yesiller/src/products.dart';
 import 'package:yesiller/src/tab_controller.dart';
 import 'package:yesiller/widgets/kaliparka.dart';
@@ -12,14 +13,14 @@ class YesillerProductsPage extends StatefulWidget {
   _YesillerProductsPageState createState() => _YesillerProductsPageState();
 }
 
-class _YesillerProductsPageState extends State<YesillerProductsPage> {
+class _YesillerProductsPageState extends ResponsiveState<YesillerProductsPage> {
   @override
   void initState() {
     super.initState();
   }
 
-  @override
-  Widget build(BuildContext context) {
+  KalipArka buildKalipArka(
+      double fontSize1, double fontSize2, double fontSize3) {
     return KalipArka(
       yatay: false,
       child: Container(
@@ -38,8 +39,8 @@ class _YesillerProductsPageState extends State<YesillerProductsPage> {
                               child: buildProductPicture(product),
                             ),
                             Expanded(
-                              child:
-                                  buildProductDescription(product, 50, 33, 32),
+                              child: buildProductDescription(
+                                  product, fontSize1, fontSize2, fontSize3),
                             ),
                           ],
                         ),
@@ -105,5 +106,25 @@ class _YesillerProductsPageState extends State<YesillerProductsPage> {
         product["asset"],
       ),
     );
+  }
+
+  @override
+  Widget buildDesktop(Object context) {
+    return buildKalipArka(50, 33, 32);
+  }
+
+  @override
+  Widget buildMobile(BuildContext context) {
+    return buildKalipArka(40, 25, 23);
+  }
+
+  @override
+  Widget buildWideMobileOrTablet(BuildContext context) {
+    return buildKalipArka(40, 25, 23);
+  }
+
+  @override
+  Widget buildWideTabletOrDesktop(BuildContext context) {
+    return buildKalipArka(50, 33, 32);
   }
 }

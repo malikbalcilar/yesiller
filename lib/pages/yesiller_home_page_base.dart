@@ -42,44 +42,47 @@ class _YesillerHomePageBaseState extends ResponsiveState<YesillerHomePageBase> {
 
   @override
   Widget buildDesktop(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: buildStack(size, true),
-    );
+    return buildScaffold(true);
   }
 
   GlobalKey<ScaffoldState> mobileScaffold = GlobalKey<ScaffoldState>();
 
   @override
   Widget buildMobile(BuildContext context) {
+    return buildScaffold(false);
+  }
+
+  Scaffold buildScaffold(bool desktop) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       key: mobileScaffold,
-      endDrawer: Drawer(
-        child: Container(
-          color: const Color(0xFF042a1d),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 15, top: 15),
-                child: IconButton(
-                    icon: const Icon(
-                      Icons.close,
-                      color: Colors.white,
-                      size: 30,
+      endDrawer: desktop
+          ? null
+          : Drawer(
+              child: Container(
+                color: const Color(0xFF042a1d),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 15, top: 15),
+                      child: IconButton(
+                          icon: const Icon(
+                            Icons.close,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          }),
                     ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    }),
+                    const Expanded(child: TopButtons()),
+                  ],
+                ),
               ),
-              const Expanded(child: TopButtons()),
-            ],
-          ),
-        ),
-      ),
-      body: buildStack(size, false),
+            ),
+      body: buildStack(size, desktop),
     );
   }
 

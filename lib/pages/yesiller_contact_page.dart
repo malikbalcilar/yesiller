@@ -65,19 +65,14 @@ class _YesillerContactPageState extends State<YesillerContactPage> {
             Expanded(
               flex: 3,
               child: Padding(
-                padding: const EdgeInsets.only(right: 50, left: 30),
+                padding: const EdgeInsets.only(right: 50, left: 30,),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+
                   children: [
-                    InkWell(
-                      onTap: () async {
-                        if (await canLaunch("mailto:mehmedyaz@gmail.com")) {
-                          await launch("mailto:mehmedyaz@gmail.com");
-                        }
-                      },
-                      child: Text("İLETİŞİM FORMU",
-                          style: TextStyle(color: Colors.white, fontSize: 20)),
-                    ),
+                    SizedBox(height: 90),
+                    Text("İLETİŞİM FORMU",style: TextStyle(color: Colors.white,fontSize: 23),),
+
+
                     Padding(
                       padding: const EdgeInsets.all(4.0),
                       child: Container(
@@ -236,54 +231,58 @@ class _YesillerContactPageState extends State<YesillerContactPage> {
             ),
             Expanded(
               flex: 5,
-              child: Container(
-                height: 500,
-                width: 700,
-                child: GoogleMap(
-                  markers: {
-                    Marker(
-                        markerId: MarkerId("dukkanmark"),
-                        position: LatLng(37.82713741627923, 32.43678031363905),
-                        infoWindow: InfoWindow(title: "Dükkan", snippet: "sn"),
-                        onTap: () {
-                          if (controller != null) {
-                            controller.animateCamera(
-                                CameraUpdate.newCameraPosition(CameraPosition(
-                                    zoom: 14.5,
-                                    target: LatLng(37.82713741627923,
-                                        32.43678031363905))));
-                          }
-                        }),
-                    Marker(
-                        markerId: MarkerId("dukkanmark2"),
-                        position: LatLng(37.83607030763146, 32.425440365702485),
-                        infoWindow:
-                            InfoWindow(title: "Dükkan2", snippet: "buyruuun"),
-                        onTap: () {
-                          if (controller != null) {
-                            controller.animateCamera(
-                                CameraUpdate.newCameraPosition(CameraPosition(
-                                    zoom: 14.5,
-                                    target: LatLng(37.83607030763146,
-                                        32.425440365702485))));
-                          }
-                        }),
-                  },
-                  mapType: MapType.normal,
-                  initialCameraPosition: const CameraPosition(
-                      target: LatLng(37.84729678686463, 32.443346361307505),
-                      zoom: 13.5,
-                      bearing: 0,
-                      tilt: 60.0),
-                  onTap: (l) {
-                    print(l);
-                  },
-                  onMapCreated: (cont) {
-                    setState(() {
-                      controller = cont;
-                    });
-                  },
-                ),
+              child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                children: [SizedBox(height: 50,),
+                  Container(
+                    height: 500,
+                    width: 700,
+                    child: GoogleMap(
+                      markers: {
+                        Marker(
+                            markerId: MarkerId("dukkanmark"),
+                            position: LatLng(37.82713741627923, 32.43678031363905),
+                            infoWindow: InfoWindow(title: "Dükkan", snippet: "sn"),
+                            onTap: () {
+                              if (controller != null) {
+                                controller.animateCamera(
+                                    CameraUpdate.newCameraPosition(CameraPosition(
+                                        zoom: 14.5,
+                                        target: LatLng(37.82713741627923,
+                                            32.43678031363905))));
+                              }
+                            }),
+                        Marker(
+                            markerId: MarkerId("dukkanmark2"),
+                            position: LatLng(37.83607030763146, 32.425440365702485),
+                            infoWindow:
+                                InfoWindow(title: "Dükkan2", snippet: "buyruuun"),
+                            onTap: () {
+                              if (controller != null) {
+                                controller.animateCamera(
+                                    CameraUpdate.newCameraPosition(CameraPosition(
+                                        zoom: 14.5,
+                                        target: LatLng(37.83607030763146,
+                                            32.425440365702485))));
+                              }
+                            }),
+                      },
+                      mapType: MapType.normal,
+                      initialCameraPosition: const CameraPosition(
+                          target: LatLng(37.84729678686463, 32.443346361307505),
+                          zoom: 13.5,
+                          bearing: 0,
+                          tilt: 60.0),
+                      onTap: (l) {
+                        print(l);
+                      },
+                      onMapCreated: (cont) {
+                        setState(() {
+                          controller = cont;
+                        });
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
             Padding(

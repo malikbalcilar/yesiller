@@ -11,6 +11,7 @@ class KalipArka extends StatefulWidget {
   final bool initialAnimate;
   final Duration opacityDuration;
   final Duration delay;
+  final bool yatay;
 
   ///
   const KalipArka(
@@ -20,7 +21,8 @@ class KalipArka extends StatefulWidget {
       this.distance = 40,
       this.duration = const Duration(milliseconds: 1630),
       this.opacityDuration = const Duration(milliseconds: 3000),
-      this.delay = const Duration(milliseconds: 150)})
+      this.delay = const Duration(milliseconds: 150),
+      this.yatay = true})
       : super(key: key);
 
   @override
@@ -71,10 +73,10 @@ class _KalipArkaState extends State<KalipArka> {
                     ),
                     imageFilter: ImageFilter.blur(sigmaY: 3, sigmaX: 3)),
                 AnimatedPositioned(
-                  left: animated ? 0 : widget.distance,
-                  bottom: 0,
-                  right: animated ? 0 : widget.distance * -1,
-                  top: 0,
+                  left:!widget.yatay ? 0 : animated ? 0 : widget.distance,
+                  bottom:widget.yatay ? 0 : animated ? 0 : widget.distance * -1,
+                  right:!widget.yatay ? 0 : animated ? 0 : widget.distance * -1,
+                  top:widget.yatay ? 0 : animated ? 0 : widget.distance,
                   duration: widget.duration,
                   curve: Curves.easeInOutCubic,
                   child: AnimatedOpacity(

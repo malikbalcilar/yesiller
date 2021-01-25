@@ -77,16 +77,19 @@ class _YesillerHomePageBaseState extends ResponsiveState<YesillerHomePageBase> {
                   begin: Alignment.centerLeft,
                   end: const Alignment(1, 0))),
           child: Container(
-            margin: const EdgeInsets.only(left: 15),
-            alignment: Alignment.centerLeft,
+            margin: const EdgeInsets.only(left: 10),
+
             decoration: const BoxDecoration(
               color: Colors.transparent,
             ),
             height: 65,
-            width: 120,
-            child: Image.asset(
-              "assets/logoyeni.png",
-              fit: BoxFit.fitHeight,
+            width: 145,
+            child: Padding(
+              padding: const EdgeInsets.all(1),
+              child: Image.asset(
+                "assets/logoyeni.png",
+                fit: BoxFit.fitHeight,
+              ),
             ),
           ),
         ),

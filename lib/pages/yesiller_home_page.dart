@@ -97,7 +97,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
   }
 
   Map<String, String> yaziler = {
-    "kömür.jpg": "Yüksek Kalori\nVerimli Enerji",
+    "kömür.jpg": "Yüksek Kalori Verimli Enerji",
     "kömürel.jpg": "Isınmanın Değerli Hali",
     "orman.jpg": "Sürdürülebilir Yaşam\nYaşanılabilir Çevre",
     "odun.jpg": "Çevre Dostu Kömür"
@@ -125,7 +125,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
         child: Column(
           children: [
             gecisli(
-              size: Size(size.width, 650),
+              size: Size(size.width, 630),
             ),
             Container(
               width: size.width,

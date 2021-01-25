@@ -30,7 +30,8 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
   void initState() {
 //    loadImages();
     Timer.periodic(const Duration(seconds: 6), (timer) async {
-      if (widget.tabControllerMy.currentPage == 0 && pageController.hasClients) {
+      if (widget.tabControllerMy.currentPage == 0 &&
+          pageController.hasClients) {
         await pageController.animateToPage(current + 1,
             duration: const Duration(milliseconds: 1850), curve: _curve);
       }
@@ -113,12 +114,6 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
   @override
   Widget buildDesktop(BuildContext context) {
     _precachePicture(context);
-//    if (_bytes.length != yaziler.length) {
-//      return const Center(
-//        child: CircularProgressIndicator(),
-//      );
-//    }
-
     var size = MediaQuery.of(context).size;
     return KalipArka(
       child: SingleChildScrollView(
@@ -130,7 +125,6 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
             Container(
               width: size.width,
               height: 300,
-
               ///ALT TARAF ADRESLER
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -138,85 +132,16 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Expanded(
-                      flex: 3,
-                      child: AddressWidget(
-                        addressList: address1,
-                      ),
+                      flex: 35,
+                      child: buildAddress1(),
                     ),
                     Expanded(
-                      flex: 3,
-                      child: AddressWidget(
-                        addressList: address2,
-                      ),
+                      flex: 35,
+                      child: buildAddress2(),
                     ),
                     Expanded(
-                      flex: 4,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              InkResponse(
-                                onTap: () async {
-                                  if (await canLaunch("https://www.instagram.com/yesillerkomur/?hl=tr")) {
-                                    launch("https://www.instagram.com/yesillerkomur/?hl=tr");
-                                  }
-                                },
-                                child: ClipRRect(
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(11)),
-                                  child: Image.asset(
-                                    "icons8-instagram.gif",
-                                    height: 40,
-                                    width: 40,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 15,
-                              ),
-                              InkWell(
-                                onTap: () async {
-                                  if (await canLaunch("https://www.facebook.com/yesillergroup/")) {
-                                    launch("https://www.facebook.com/yesillergroup/");
-                                  }
-                                },
-                                child: ClipRRect(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(20)),
-                                    child: Image.asset("facebook.gif",
-                                        height: 40, width: 40)),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            height: 1,
-                            width: 125,
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                    spreadRadius: 1,
-                                    blurRadius: 5,
-                                    color: Colors.greenAccent,
-                                    offset: Offset(1, 2))
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 25,
-                          ),
-                          const Text(
-                            "TAKİPTE KALIN",
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
-                        ],
-                      ),
+                      flex: 40,
+                      child: buildSocialButtons(),
                     ),
                   ],
                 ),
@@ -228,17 +153,122 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
     );
   }
 
+  AddressWidget buildAddress2() {
+    return AddressWidget(
+      addressList: address2,
+    );
+  }
+
+  AddressWidget buildAddress1() {
+    return AddressWidget(
+      addressList: address1,
+    );
+  }
+
+  Column buildSocialButtons() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            InkResponse(
+              onTap: () async {
+                if (await canLaunch(
+                    "https://www.instagram.com/yesillerkomur/?hl=tr")) {
+                  launch("https://www.instagram.com/yesillerkomur/?hl=tr");
+                }
+              },
+              child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(11)),
+                child: Image.asset(
+                  "icons8-instagram.gif",
+                  height: 40,
+                  width: 40,
+                ),
+              ),
+            ),
+            const SizedBox(
+              width: 15,
+            ),
+            InkWell(
+              onTap: () async {
+                if (await canLaunch(
+                    "https://www.facebook.com/yesillergroup/")) {
+                  launch("https://www.facebook.com/yesillergroup/");
+                }
+              },
+              child: ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  child: Image.asset("facebook.gif", height: 40, width: 40)),
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Container(
+          height: 1,
+          width: 125,
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                  spreadRadius: 1,
+                  blurRadius: 5,
+                  color: Colors.greenAccent,
+                  offset: Offset(1, 2))
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 25,
+        ),
+        const Text(
+          "TAKİPTE KALIN",
+          style: TextStyle(color: Colors.white, fontSize: 18),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget buildMobile(BuildContext context) {
-    return buildDesktop(context);
+    var size = MediaQuery.of(context).size;
+    return KalipArka(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            gecisli(
+              size: Size(size.width, 630),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  buildAddress1(),
+                  buildAddress2(),
+                  Container(
+                      height: 200,
+                      alignment: Alignment.center,
+                      child: buildSocialButtons()),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   @override
   Widget buildWideMobileOrTablet(BuildContext context) {
-    return buildDesktop(context);
+    return buildMobile(context);
   }
 
   @override
   Widget buildWideTabletOrDesktop(BuildContext context) =>
-      buildWideMobileOrTablet(context);
+      buildDesktop(context);
 }

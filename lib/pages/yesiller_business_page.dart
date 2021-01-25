@@ -39,7 +39,9 @@ class _YesillerBusinessPageState extends State<YesillerBusinessPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 50,),
+            SizedBox(
+              height: 50,
+            ),
             Text(
               "HAKKIMIZDA",
               style: TextStyle(color: Colors.white, fontSize: 29),

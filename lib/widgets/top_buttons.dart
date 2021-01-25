@@ -60,10 +60,10 @@ class _TopButtonsState extends ResponsiveState<TopButtons> {
   Widget buildDesktop(BuildContext context) {
     return Padding(
       /// Butonların bulunduğu kısmın sağ ve soldan uzaklığı
-      padding: const EdgeInsets.symmetric(horizontal: 45),
+      padding: const EdgeInsets.only(right: 40),
       child: Row(
         children: buildChildren(
-            const EdgeInsets.symmetric(horizontal: 15, vertical: 5)),
+            const EdgeInsets.symmetric(horizontal: 12, vertical: 5)),
       ),
     );
   }
@@ -72,7 +72,7 @@ class _TopButtonsState extends ResponsiveState<TopButtons> {
   Widget buildMobile(BuildContext context) {
     return Padding(
       /// Butonların bulunduğu kısmın sağ ve soldan uzaklığı
-      padding: const EdgeInsets.symmetric(horizontal: 45),
+      padding: const EdgeInsets.only(right: 40),
       child: Container(
         width: double.infinity,
         alignment: Alignment.center,

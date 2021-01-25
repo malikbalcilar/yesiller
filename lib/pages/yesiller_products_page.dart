@@ -120,11 +120,11 @@ class _YesillerProductsPageState extends ResponsiveState<YesillerProductsPage> {
 
   @override
   Widget buildWideMobileOrTablet(BuildContext context) {
-    return buildKalipArka(40, 25, 23);
+    return buildKalipArka(45, 28, 25);
   }
 
   @override
   Widget buildWideTabletOrDesktop(BuildContext context) {
-    return buildKalipArka(50, 33, 32);
+    return buildKalipArka(48, 30, 28);
   }
 }

@@ -2,9 +2,12 @@ import 'dart:convert';
 import 'dart:html';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart';
+import 'package:responsive_page/responsive_page.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 import 'package:yesiller/src/addresses.dart';
@@ -20,7 +23,7 @@ class YesillerContactPage extends StatefulWidget {
   _YesillerContactPageState createState() => _YesillerContactPageState();
 }
 
-class _YesillerContactPageState extends State<YesillerContactPage> {
+class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
   InputDecoration inputDecoration(String label) {
     return InputDecoration(
         enabledBorder: OutlineInputBorder(
@@ -212,45 +215,36 @@ class _YesillerContactPageState extends State<YesillerContactPage> {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    return KalipArka(
-        initialAnimate: false,
-        child: SingleChildScrollView(
-          child: Row(
-            children: [
-              Expanded(
-                flex: 3,
-                child: _iletisimFormu(),
-              ),
-              Expanded(
-                flex: 5,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 50,
-                    ),
-                    Container(
-                      height: 500,
-                      width: 700,
-                      child: buildGoogleMap(),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [buildAddress1(), buildAddress2()],
-                ),
-              )
-            ],
-          ),
-        ));
-  }
+  // @override
+  // Widget build(BuildContext context) {
+  //   var size = MediaQuery.of(context).size;
+  //   return KalipArka(
+  //       initialAnimate: false,
+  //       child: SingleChildScrollView(
+  //         child: Row(
+  //           children: [
+  //             Expanded(
+  //               flex: 3,
+  //               child: _iletisimFormu(),
+  //             ),
+  //             Expanded(
+  //               flex: 5,
+  //               child: Padding(
+  //                 padding: const EdgeInsets.only(top: 90),
+  //                 child: Container(height: 500, child: buildGoogleMap()),
+  //               ),
+  //             ),
+  //             Padding(
+  //               padding: EdgeInsets.symmetric(horizontal: 20),
+  //               child: Column(
+  //                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //                 children: [buildAddress1(), buildAddress2()],
+  //               ),
+  //             )
+  //           ],
+  //         ),
+  //       ));
+  // }
 
   InkWell buildAddress1() {
     return InkWell(
@@ -291,49 +285,131 @@ class _YesillerContactPageState extends State<YesillerContactPage> {
     );
   }
 
-  GoogleMap buildGoogleMap() {
-    return GoogleMap(
-      markers: {
-        Marker(
-            markerId: MarkerId("dukkanmark"),
-            position: LatLng(37.82713741627923, 32.43678031363905),
-            infoWindow: InfoWindow(title: "Dükkan", snippet: "sn"),
-            onTap: () {
-              if (controller != null) {
-                controller.animateCamera(CameraUpdate.newCameraPosition(
-                    CameraPosition(
-                        zoom: 14.5,
-                        target: LatLng(37.82713741627923, 32.43678031363905))));
-              }
-            }),
-        Marker(
-            markerId: MarkerId("dukkanmark2"),
-            position: LatLng(37.83607030763146, 32.425440365702485),
-            infoWindow: InfoWindow(title: "Dükkan2", snippet: "buyruuun"),
-            onTap: () {
-              if (controller != null) {
-                controller.animateCamera(CameraUpdate.newCameraPosition(
-                    CameraPosition(
-                        zoom: 14.5,
-                        target:
-                            LatLng(37.83607030763146, 32.425440365702485))));
-              }
-            }),
-      },
-      mapType: MapType.normal,
-      initialCameraPosition: const CameraPosition(
-          target: LatLng(37.84729678686463, 32.443346361307505),
-          zoom: 13.5,
-          bearing: 0,
-          tilt: 60.0),
-      onTap: (l) {
-        print(l);
-      },
-      onMapCreated: (cont) {
-        setState(() {
-          controller = cont;
-        });
-      },
+  Widget buildGoogleMap() {
+    return GestureDetector(
+      onVerticalDragUpdate: (_) {},
+      onScaleUpdate: (_) {},
+      child: GoogleMap(
+        markers: {
+          Marker(
+              markerId: MarkerId("dukkanmark"),
+              position: LatLng(37.82713741627923, 32.43678031363905),
+              infoWindow: InfoWindow(title: "Dükkan", snippet: "sn"),
+              onTap: () {
+                if (controller != null) {
+                  controller.animateCamera(CameraUpdate.newCameraPosition(
+                      CameraPosition(
+                          zoom: 14.5,
+                          target:
+                              LatLng(37.82713741627923, 32.43678031363905))));
+                }
+              }),
+          Marker(
+              markerId: MarkerId("dukkanmark2"),
+              position: LatLng(37.83607030763146, 32.425440365702485),
+              infoWindow: InfoWindow(title: "Dükkan2", snippet: "buyruuun"),
+              onTap: () {
+                if (controller != null) {
+                  controller.animateCamera(CameraUpdate.newCameraPosition(
+                      CameraPosition(
+                          zoom: 14.5,
+                          target:
+                              LatLng(37.83607030763146, 32.425440365702485))));
+                }
+              }),
+        },
+        mapType: MapType.normal,
+        initialCameraPosition: const CameraPosition(
+            target: LatLng(37.84729678686463, 32.443346361307505),
+            zoom: 13.5,
+            bearing: 0,
+            tilt: 60.0),
+        onTap: (l) {
+          print(l);
+        },
+        onMapCreated: (cont) {
+          setState(() {
+            controller = cont;
+          });
+        },
+      ),
     );
+  }
+
+  @override
+  Widget buildDesktop(BuildContext context) {
+    return KalipArka(
+        initialAnimate: false,
+        child: SingleChildScrollView(
+          child: Row(
+            children: [
+              Expanded(
+                flex: 3,
+                child: _iletisimFormu(),
+              ),
+              Expanded(
+                flex: 5,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 90),
+                  child: Container(height: 500, child: buildGoogleMap()),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [buildAddress1(), buildAddress2()],
+                ),
+              )
+            ],
+          ),
+        ));
+  }
+
+  bool isHover = false;
+
+  @override
+  Widget buildMobile(BuildContext context) {
+    return KalipArka(
+        initialAnimate: false,
+        child: SingleChildScrollView(
+          physics: isHover
+              ? const NeverScrollableScrollPhysics()
+              : const AlwaysScrollableScrollPhysics(),
+          child: Column(
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [buildAddress1(), buildAddress2()],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 90, left: 30, right: 30),
+                child: MouseRegion(
+                    onHover: (_) {
+                      setState(() {
+                        isHover = true;
+                      });
+                    },
+                    onExit: (_) {
+                      setState(() {
+                        isHover = false;
+                      });
+                    },
+                    child: Container(height: 500, child: buildGoogleMap())),
+              ),
+              _iletisimFormu(),
+            ],
+          ),
+        ));
+  }
+
+  @override
+  Widget buildWideMobileOrTablet(BuildContext context) {
+    return buildMobile(context);
+  }
+
+  @override
+  Widget buildWideTabletOrDesktop(BuildContext context) {
+    return buildMobile(context);
   }
 }

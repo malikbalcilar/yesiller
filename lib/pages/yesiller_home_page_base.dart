@@ -93,7 +93,7 @@ class _YesillerHomePageBaseState extends ResponsiveState<YesillerHomePageBase> {
 
   @override
   Widget buildWideTabletOrDesktop(BuildContext context) =>
-      buildWideMobileOrTablet(context);
+      buildDesktop(context);
 
   Widget _mobileAppBar() {
     return Row(

@@ -37,8 +37,9 @@ class _YesillerBusinessPageState extends State<YesillerBusinessPage> {
       child: Padding(
         padding: const EdgeInsets.all(50),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(height: 50,),
             Text(
               "HAKKIMIZDA",
               style: TextStyle(color: Colors.white, fontSize: 29),

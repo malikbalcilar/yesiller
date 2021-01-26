@@ -254,7 +254,7 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
       onTap: () {
         if (controller != null) {
           controller.animateCamera(CameraUpdate.newLatLngZoom(
-              LatLng(37.82713741627923, 32.43678031363905), 14.5));
+              larende, 14.5));
 
 //                        controller.animateCamera(
 //                            CameraUpdate.newCameraPosition(CameraPosition(
@@ -274,7 +274,7 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
       onTap: () async {
         if (controller != null) {
           controller.animateCamera(CameraUpdate.newLatLngZoom(
-              LatLng(37.83607030763146, 32.425440365702485), 14.5));
+              meram, 14.5));
 //                        controller.animateCamera(
 //                            CameraUpdate.newCameraPosition(CameraPosition(
 //                                zoom: 14.5,
@@ -288,6 +288,14 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
     );
   }
 
+  LatLng larende =LatLng(37.86591461202069, 32.494190141016446);
+
+
+  LatLng meram = LatLng(37.85888198303, 32.46770083799785);
+
+
+
+
   Widget buildGoogleMap() {
     return GestureDetector(
       onVerticalDragUpdate: (_) {},
@@ -295,36 +303,37 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
       child: GoogleMap(
         markers: {
           Marker(
-              markerId: MarkerId("dukkanmark"),
-              position: LatLng(37.82713741627923, 32.43678031363905),
-              infoWindow: InfoWindow(title: "Dükkan", snippet: "sn"),
+              markerId: MarkerId("larende"),
+              position: larende,
+              infoWindow: InfoWindow(title: "Larende Şube", snippet: "YEŞİLLER KÖMÜR"),
               onTap: () {
                 if (controller != null) {
                   controller.animateCamera(CameraUpdate.newCameraPosition(
                       CameraPosition(
                           zoom: 14.5,
                           target:
-                              LatLng(37.82713741627923, 32.43678031363905))));
+                          larende)));
                 }
               }),
           Marker(
-              markerId: MarkerId("dukkanmark2"),
-              position: LatLng(37.83607030763146, 32.425440365702485),
-              infoWindow: InfoWindow(title: "Dükkan2", snippet: "buyruuun"),
+              markerId: MarkerId("meram"),
+              position: meram,
+              infoWindow: InfoWindow(title: "Meram Şube", snippet: "YEŞİLLER KÖMÜR"),
               onTap: () {
                 if (controller != null) {
                   controller.animateCamera(CameraUpdate.newCameraPosition(
                       CameraPosition(
                           zoom: 14.5,
                           target:
-                              LatLng(37.83607030763146, 32.425440365702485))));
+                              meram)));
                 }
               }),
         },
         mapType: MapType.normal,
-        initialCameraPosition: const CameraPosition(
-            target: LatLng(37.84729678686463, 32.443346361307505),
-            zoom: 13.5,
+        initialCameraPosition:  CameraPosition(
+            target:LatLng(37.86319488439623, 32.48249596219935)
+            ,
+            zoom: 14,
             bearing: 0,
             tilt: 60.0),
         onTap: (l) {

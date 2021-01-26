@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_page/responsive_page.dart';
-import 'package:yesiller/src/products.dart';
-import 'package:yesiller/src/tab_controller.dart';
-import 'package:yesiller/widgets/kaliparka.dart';
+import '../src/products.dart';
+import '../widgets/kaliparka.dart';
 
 ///
 class YesillerProductsPage extends StatefulWidget {
@@ -27,7 +26,7 @@ class _YesillerProductsPageState extends ResponsiveState<YesillerProductsPage> {
         color: Colors.white,
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.only(left: 30 , right: 30 , top: 60),
+            padding: const EdgeInsets.only(left: 30 , right: 30 , top: 60),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: products
@@ -91,12 +90,12 @@ class _YesillerProductsPageState extends ResponsiveState<YesillerProductsPage> {
               fontFamily: "Clean",
               fontWeight: FontWeight.w900,
               fontSize: fontSize1,
-              color: Color(0xFF094c06)),
+              color: const Color(0xFF094c06)),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 30),
           child: Container(
-            color: Color(0xFF192e1b),
+            color: const Color(0xFF192e1b),
             height: 1.5,
           ),
         ),
@@ -110,7 +109,7 @@ class _YesillerProductsPageState extends ResponsiveState<YesillerProductsPage> {
                         fontFamily: "Clean",
                         fontWeight: FontWeight.w700,
                         fontSize: fontSize2,
-                        color: Color(0xFF094c06)),
+                        color: const Color(0xFF094c06)),
                     children: <TextSpan>[
                   TextSpan(
                       text: _prop.value,

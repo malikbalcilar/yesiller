@@ -1,18 +1,15 @@
 import 'dart:convert';
 import 'dart:html';
-import 'dart:math';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart';
 import 'package:responsive_page/responsive_page.dart';
 
-import 'package:url_launcher/url_launcher.dart';
-import 'package:yesiller/src/addresses.dart';
-import 'package:yesiller/widgets/address_widget.dart';
-import 'package:yesiller/widgets/kaliparka.dart';
+import '../src/addresses.dart';
+import '../widgets/address_widget.dart';
+import '../widgets/kaliparka.dart';
 
 ///
 class YesillerContactPage extends StatefulWidget {
@@ -29,14 +26,14 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
         enabledBorder: OutlineInputBorder(
             borderSide:
                 BorderSide(width: 0.5, color: Colors.white.withOpacity(1))),
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(width: 1, color: Colors.white)),
-        labelStyle: TextStyle(color: Colors.white, fontSize: 16),
+        labelStyle: const TextStyle(color: Colors.white, fontSize: 16),
         filled: true,
         labelText: label);
   }
 
-  List<String> _form = ["İsim", "Soyisim", "Telefon", "E-posta", "Mesaj"];
+  final List<String> _form = ["İsim", "Soyisim", "Telefon", "E-posta", "Mesaj"];
 
   List<TextEditingController> editingControllers = [
     TextEditingController(),
@@ -50,10 +47,11 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
 
   bool sending = false;
 
-  _showSnack(String mesaj) {
+
+  void _showSnack(String mesaj) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(mesaj),
-      duration: Duration(seconds: 5),
+      duration: const Duration(seconds: 5),
     ));
   }
 
@@ -65,7 +63,7 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
       ),
       child: Column(
         children: [
-          SizedBox(height: 90),
+          const SizedBox(height: 90),
           Text(
             "İLETİŞİM FORMU",
             style: TextStyle(
@@ -81,7 +79,7 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
               width: double.infinity,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 40,
           ),
           Container(
@@ -111,8 +109,9 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
                 child: Container(
                   height: 37,
                   width: 110,
+                  // ignore: deprecated_member_use
                   child: RaisedButton(
-                    textColor: Color(0xFF042a1d),
+                    textColor: const Color(0xFF042a1d),
                     onPressed: () async {
                       ///
                       var emailLocalValid = editingControllers[3].text !=
@@ -207,7 +206,7 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
                             style: TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.w900),
                           ),
-                    color: Color(0xFFfbd5e2),
+                    color: const Color(0xFFfbd5e2),
                   ),
                 ),
               ),
@@ -273,7 +272,7 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
     return InkWell(
       onTap: () async {
         if (controller != null) {
-          controller.animateCamera(CameraUpdate.newLatLngZoom(
+          await controller.animateCamera(CameraUpdate.newLatLngZoom(
               meram, 14.5));
 //                        controller.animateCamera(
 //                            CameraUpdate.newCameraPosition(CameraPosition(
@@ -288,10 +287,10 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
     );
   }
 
-  LatLng larende =LatLng(37.86591461202069, 32.494190141016446);
+  LatLng larende =const LatLng(37.86591461202069, 32.494190141016446);
 
 
-  LatLng meram = LatLng(37.85888198303, 32.46770083799785);
+  LatLng meram = const LatLng(37.85888198303, 32.46770083799785);
 
 
 
@@ -305,7 +304,7 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
           Marker(
               markerId: MarkerId("larende"),
               position: larende,
-              infoWindow: InfoWindow(title: "Larende Şube", snippet: "YEŞİLLER KÖMÜR"),
+              infoWindow: const InfoWindow(title: "Larende Şube", snippet: "YEŞİLLER KÖMÜR"),
               onTap: () {
                 if (controller != null) {
                   controller.animateCamera(CameraUpdate.newCameraPosition(
@@ -318,7 +317,7 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
           Marker(
               markerId: MarkerId("meram"),
               position: meram,
-              infoWindow: InfoWindow(title: "Meram Şube", snippet: "YEŞİLLER KÖMÜR"),
+              infoWindow: const InfoWindow(title: "Meram Şube", snippet: "YEŞİLLER KÖMÜR"),
               onTap: () {
                 if (controller != null) {
                   controller.animateCamera(CameraUpdate.newCameraPosition(
@@ -330,7 +329,7 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
               }),
         },
         mapType: MapType.normal,
-        initialCameraPosition:  CameraPosition(
+        initialCameraPosition:  const CameraPosition(
             target:LatLng(37.86319488439623, 32.48249596219935)
             ,
             zoom: 14,
@@ -367,7 +366,7 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [buildAddress1(), buildAddress2()],
@@ -395,28 +394,28 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
                     buildAddress1(),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
                     Container(
                       height: 0.3,
                       width: double.infinity,
                       color: Colors.white.withOpacity(0.5),
-                      margin: EdgeInsets.symmetric(horizontal: 20),
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
                     ),
                     buildAddress2(),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
                     Container(
                       height: 0.3,
                       width: double.infinity,
                       color: Colors.white.withOpacity(0.5),
-                      margin: EdgeInsets.symmetric(horizontal: 20),
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
                     ),
                   ],
                 ),
@@ -437,7 +436,7 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
                     child: Container(height: 500, child: buildGoogleMap())),
               ),
               _iletisimFormu(mobile: true),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               )
             ],

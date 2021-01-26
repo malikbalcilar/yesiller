@@ -5,6 +5,17 @@ import 'package:flutter/material.dart';
 
 ///
 class KalipArka extends StatefulWidget {
+  ///
+  const KalipArka(
+      {Key key,
+        this.child,
+        this.initialAnimate = true,
+        this.distance = 40,
+        this.duration = const Duration(milliseconds: 1630),
+        this.opacityDuration = const Duration(milliseconds: 3000),
+        this.delay = const Duration(milliseconds: 150),
+        this.yatay = true})
+      : super(key: key);
   final Widget child;
   final double distance;
   final Duration duration;
@@ -13,17 +24,7 @@ class KalipArka extends StatefulWidget {
   final Duration delay;
   final bool yatay;
 
-  ///
-  const KalipArka(
-      {Key key,
-      this.child,
-      this.initialAnimate = true,
-      this.distance = 40,
-      this.duration = const Duration(milliseconds: 1630),
-      this.opacityDuration = const Duration(milliseconds: 3000),
-      this.delay = const Duration(milliseconds: 150),
-      this.yatay = true})
-      : super(key: key);
+
 
   @override
   _KalipArkaState createState() => _KalipArkaState();
@@ -123,7 +124,7 @@ class _KalipArkaState extends State<KalipArka> {
                     padding: const EdgeInsets.only(left: 20),
                     child: Text(
                       "COPYRIGHT ${String.fromCharCode(0x00A9)} 2021 MM Yazılım",
-                      style: TextStyle(color: Colors.white ,fontSize: 11),
+                      style: const TextStyle(color: Colors.white ,fontSize: 11),
                     ),
                   ),
                   Container(
@@ -164,98 +165,6 @@ class _KalipArkaState extends State<KalipArka> {
       ),
     );
 
-    return Scaffold(
-      backgroundColor: const Color(0xFF012418),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: Stack(
-              fit: StackFit.expand,
-              alignment: Alignment.topLeft,
-              children: [
-                Positioned(
-                  child: Opacity(
-                    opacity: 0.055,
-                    child: Image.asset(
-                      "logoyeni.png",
-                      repeat: ImageRepeat.repeat,
-                    ),
-                  ),
-                  left: 0,
-                  right: 0,
-                  top: 0,
-                  bottom: 0,
-                ),
-                AnimatedPositioned(
-                  left: animated ? 0 : widget.distance,
-                  bottom: 0,
-                  right: animated ? 0 : widget.distance * -1,
-                  top: 0,
-                  duration: widget.duration,
-                  curve: Curves.easeInOutCubic,
-                  child: AnimatedOpacity(
-                      opacity: animated ? 1 : 0,
-                      duration: widget.opacityDuration,
-                      curve: Curves.easeInOutCubic,
-                      child: widget.child),
-                ),
-                Positioned(
-                  child: BackdropFilter(
-                      child: Container(
-                        width: size.width,
-                        height: size.height,
-                      ),
-                      filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3)),
-                  left: 0,
-                  height: 0,
-                  top: 0,
-                  width: 0,
-                ),
-              ],
-            ),
-          ),
-          Container(
-            width: size.width,
-            height: 60,
-            alignment: Alignment.centerRight,
-            color: const Color(0xFF012418),
-            child: Container(
-              color: Colors.black.withOpacity(0.8),
-              width: double.infinity,
-              height: double.infinity,
-              alignment: Alignment.centerRight,
-              child: Container(
-                height: 60,
-                width: 280,
-                alignment: Alignment.centerRight,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: [
-                  Colors.white.withOpacity(0.5),
-                  Colors.transparent
-                ], stops: const [
-                  0.53,
-                  1
-                ], begin: Alignment.centerRight, end: Alignment.centerLeft)),
-                child: Container(
-                  margin: const EdgeInsets.only(right: 15),
-                  alignment: Alignment.centerRight,
-                  decoration: const BoxDecoration(
-                    color: Colors.transparent,
-                  ),
-                  height: 60,
-                  width: 120,
-                  child: Image.asset(
-                    "assets/logoyeni.png",
-                    fit: BoxFit.fitHeight,
-                  ),
-                ),
-              ),
-            ),
-          )
-        ],
-      ),
-    );
   }
 }
 

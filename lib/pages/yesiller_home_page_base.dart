@@ -52,6 +52,7 @@ class _YesillerHomePageBaseState extends ResponsiveState<YesillerHomePageBase> {
     return buildScaffold(false);
   }
 
+  // ignore: avoid_positional_boolean_parameters
   Scaffold buildScaffold(bool desktop) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
@@ -63,7 +64,7 @@ class _YesillerHomePageBaseState extends ResponsiveState<YesillerHomePageBase> {
               child: Drawer(
                 child: Container(
                   color: const Color(0xFF042a1d),
-                  child: TopButtons(),
+                  child: const TopButtons(),
                 ),
               ),
             ),
@@ -130,6 +131,7 @@ class _YesillerHomePageBaseState extends ResponsiveState<YesillerHomePageBase> {
     );
   }
 
+  // ignore: avoid_positional_boolean_parameters
   Positioned buildAppBar(Size size, bool desktop) {
     return Positioned(
       left: 0,
@@ -150,6 +152,7 @@ class _YesillerHomePageBaseState extends ResponsiveState<YesillerHomePageBase> {
     );
   }
 
+  // ignore: avoid_positional_boolean_parameters
   Stack buildStack(Size size, bool dektop) {
     return Stack(
       alignment: Alignment.topCenter,

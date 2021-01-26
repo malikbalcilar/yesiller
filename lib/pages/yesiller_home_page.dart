@@ -5,11 +5,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_page/responsive_page.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:yesiller/src/addresses.dart';
-import 'package:yesiller/src/tab_controller.dart';
-import 'package:yesiller/widgets/kaliparka.dart';
+
+import '../src/addresses.dart';
+import '../src/tab_controller.dart';
 import '../widgets/address_widget.dart';
-import '../widgets/top_buttons.dart';
+import '../widgets/kaliparka.dart';
 
 /// Ana Sayfa
 class YesillerHomePage extends StatefulWidget {
@@ -178,7 +178,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
               onTap: () async {
                 if (await canLaunch(
                     "https://www.instagram.com/yesillerkomur/?hl=tr")) {
-                  launch("https://www.instagram.com/yesillerkomur/?hl=tr");
+                  await launch("https://www.instagram.com/yesillerkomur/?hl=tr");
                 }
               },
               child: ClipRRect(
@@ -197,7 +197,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
               onTap: () async {
                 if (await canLaunch(
                     "https://www.facebook.com/yesillergroup/")) {
-                  launch("https://www.facebook.com/yesillergroup/");
+                  await launch("https://www.facebook.com/yesillergroup/");
                 }
               },
               child: ClipRRect(
@@ -251,24 +251,24 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   buildAddress1(),
-                  SizedBox(
+                  const SizedBox(
                     height: 50,
                   ),
                   Container(
                     height: 0.3,
                     width: size.width,
                     color: Colors.white.withOpacity(0.5),
-                    margin: EdgeInsets.symmetric(horizontal: 20),
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
                   ),
                   buildAddress2(),
-                  SizedBox(
+                  const SizedBox(
                     height: 50,
                   ),
                   Container(
                     height: 0.3,
                     width: size.width,
                     color: Colors.white.withOpacity(0.5),
-                    margin: EdgeInsets.symmetric(horizontal: 20),
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
                   ),
                   Container(
                       height: 200,

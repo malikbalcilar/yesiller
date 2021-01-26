@@ -2,7 +2,7 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:responsive_page/responsive_page.dart';
-import 'package:yesiller/src/tab_controller.dart';
+import '../src/tab_controller.dart';
 
 ///
 class TopButtons extends StatefulWidget {
@@ -88,7 +88,7 @@ class _TopButtonsState extends ResponsiveState<TopButtons> {
               height: 0.5,
               color: Colors.white.withOpacity(0.5),
               width: double.infinity,
-              margin: EdgeInsets.symmetric(horizontal: 0),
+              margin: const EdgeInsets.symmetric(horizontal: 0),
             );
           }
         }),
@@ -112,7 +112,7 @@ class _TopButtonsState extends ResponsiveState<TopButtons> {
         .map(
           (e) => Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
                 color: current == 1 ? Colors.transparent : Colors.transparent),
             key: _keys[e.key],
             padding: padding,

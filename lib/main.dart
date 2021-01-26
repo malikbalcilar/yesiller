@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:yesiller/pages/yesiller_home_page_base.dart';
 
 import 'pages/yesiller_business_page.dart';
 import 'pages/yesiller_contact_page.dart';
-import 'pages/yesiller_home_page.dart';
+import 'pages/yesiller_home_page_base.dart';
 import 'pages/yesiller_products_page.dart';
 
 void main() {
@@ -50,7 +49,7 @@ class YesillerWebSite extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: createMaterialColor(Color(0xFF192e1b)),
+        primarySwatch: createMaterialColor(const Color(0xFF192e1b)),
         fontFamily: "Clean",
       ),
       title: "Yeşiller",

@@ -58,27 +58,12 @@ class _YesillerHomePageBaseState extends ResponsiveState<YesillerHomePageBase> {
       key: mobileScaffold,
       endDrawer: desktop
           ? null
-          : Drawer(
-              child: Container(
-                color: const Color(0xFF042a1d),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 15, top: 15),
-                      child: IconButton(
-                          icon: const Icon(
-                            Icons.close,
-                            color: Colors.white,
-                            size: 30,
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          }),
-                    ),
-                    const Expanded(child: TopButtons()),
-                  ],
+          : Container(
+              width: 190,
+              child: Drawer(
+                child: Container(
+                  color: const Color(0xFF042a1d),
+                  child: TopButtons(),
                 ),
               ),
             ),
@@ -100,8 +85,8 @@ class _YesillerHomePageBaseState extends ResponsiveState<YesillerHomePageBase> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          height: 65,
-          width: 300,
+          height: 50,
+          width: 296,
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -114,7 +99,7 @@ class _YesillerHomePageBaseState extends ResponsiveState<YesillerHomePageBase> {
             decoration: const BoxDecoration(
               color: Colors.transparent,
             ),
-            height: 65,
+            height: 50,
             width: 145,
             child: Padding(
               padding: const EdgeInsets.all(1),
@@ -149,7 +134,7 @@ class _YesillerHomePageBaseState extends ResponsiveState<YesillerHomePageBase> {
     return Positioned(
       left: 0,
       top: 0,
-      height: 65,
+      height: desktop ? 65 : 50,
       width: size.width,
       child: current == 1
           ? Container(

@@ -57,7 +57,7 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
     ));
   }
 
-  Widget _iletisimFormu() {
+  Widget _iletisimFormu({bool mobile = false}) {
     return Padding(
       padding: const EdgeInsets.only(
         right: 50,
@@ -68,7 +68,10 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
           SizedBox(height: 90),
           Text(
             "İLETİŞİM FORMU",
-            style: TextStyle(color: Colors.white, fontSize: 23),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: mobile ? 19 : 23,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(4.0),
@@ -378,12 +381,39 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
               : const AlwaysScrollableScrollPhysics(),
           child: Column(
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [buildAddress1(), buildAddress2()],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    SizedBox(
+                      height: 50,
+                    ),
+                    buildAddress1(),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Container(
+                      height: 0.3,
+                      width: double.infinity,
+                      color: Colors.white.withOpacity(0.5),
+                      margin: EdgeInsets.symmetric(horizontal: 20),
+                    ),
+                    buildAddress2(),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Container(
+                      height: 0.3,
+                      width: double.infinity,
+                      color: Colors.white.withOpacity(0.5),
+                      margin: EdgeInsets.symmetric(horizontal: 20),
+                    ),
+                  ],
+                ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 90, left: 30, right: 30),
+                padding: const EdgeInsets.only(top: 50, left: 30, right: 30),
                 child: MouseRegion(
                     onHover: (_) {
                       setState(() {
@@ -397,7 +427,10 @@ class _YesillerContactPageState extends ResponsiveState<YesillerContactPage> {
                     },
                     child: Container(height: 500, child: buildGoogleMap())),
               ),
-              _iletisimFormu(),
+              _iletisimFormu(mobile: true),
+              SizedBox(
+                height: 30,
+              )
             ],
           ),
         ));

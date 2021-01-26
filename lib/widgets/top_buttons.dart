@@ -70,19 +70,28 @@ class _TopButtonsState extends ResponsiveState<TopButtons> {
 
   @override
   Widget buildMobile(BuildContext context) {
-    return Padding(
-      /// Butonların bulunduğu kısmın sağ ve soldan uzaklığı
-      padding: const EdgeInsets.only(right: 40),
-      child: Container(
-        width: double.infinity,
-        alignment: Alignment.center,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: buildChildren(
-              const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-              navigate: true),
-        ),
+    var children = buildChildren(
+        const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+        navigate: true);
+
+    return Container(
+      width: double.infinity,
+      alignment: Alignment.center,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: List.generate(_categories.length * 2, (index) {
+          if (index.isEven) {
+            return children[(index / 2).floor()];
+          } else {
+            return Container(
+              height: 0.5,
+              color: Colors.white.withOpacity(0.5),
+              width: double.infinity,
+              margin: EdgeInsets.symmetric(horizontal: 0),
+            );
+          }
+        }),
       ),
     );
   }
@@ -107,17 +116,21 @@ class _TopButtonsState extends ResponsiveState<TopButtons> {
                 color: current == 1 ? Colors.transparent : Colors.transparent),
             key: _keys[e.key],
             padding: padding,
-            child: TextButton(
-                onPressed: () {
+            child: InkWell(
+                onTap: () {
                   if (navigate) {
                     Navigator.pop(context);
                   }
                   TabControllerMy()
                       .jumpTo(_categories.keys.toList().indexOf(e.key));
                 },
-                child: Text(
-                  e.key,
-                  style: const TextStyle(color: Colors.white, fontSize: 14),
+                child: Container(
+                  width: navigate?  double.infinity: null,
+                  alignment: Alignment.center,
+                  child: Text(
+                    e.key,
+                    style: const TextStyle(color: Colors.white, fontSize: 14),
+                  ),
                 )),
           ),
         )

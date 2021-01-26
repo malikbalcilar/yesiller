@@ -73,10 +73,26 @@ class _KalipArkaState extends State<KalipArka> {
                     ),
                     imageFilter: ImageFilter.blur(sigmaY: 3, sigmaX: 3)),
                 AnimatedPositioned(
-                  left:!widget.yatay ? 0 : animated ? 0 : widget.distance,
-                  bottom:widget.yatay ? 0 : animated ? 0 : widget.distance * -1,
-                  right:!widget.yatay ? 0 : animated ? 0 : widget.distance * -1,
-                  top:widget.yatay ? 0 : animated ? 0 : widget.distance,
+                  left: !widget.yatay
+                      ? 0
+                      : animated
+                          ? 0
+                          : widget.distance,
+                  bottom: widget.yatay
+                      ? 0
+                      : animated
+                          ? 0
+                          : widget.distance * -1,
+                  right: !widget.yatay
+                      ? 0
+                      : animated
+                          ? 0
+                          : widget.distance * -1,
+                  top: widget.yatay
+                      ? 0
+                      : animated
+                          ? 0
+                          : widget.distance,
                   duration: widget.duration,
                   curve: Curves.easeInOutCubic,
                   child: AnimatedOpacity(
@@ -100,31 +116,47 @@ class _KalipArkaState extends State<KalipArka> {
               width: double.infinity,
               height: double.infinity,
               alignment: Alignment.centerRight,
-              child: Container(
-                height: 60,
-                width: 280,
-                alignment: Alignment.centerRight,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: [
-                  Colors.white.withOpacity(0.5),
-                  Colors.transparent
-                ], stops: const [
-                  0.53,
-                  1
-                ], begin: Alignment.centerRight, end: Alignment.centerLeft)),
-                child: Container(
-                  margin: const EdgeInsets.only(right: 15),
-                  alignment: Alignment.centerRight,
-                  decoration: const BoxDecoration(
-                    color: Colors.transparent,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: Text(
+                      "COPYRIGHT ${String.fromCharCode(0x00A9)} 2021 MM Yazılım",
+                      style: TextStyle(color: Colors.white ,fontSize: 11),
+                    ),
                   ),
-                  height: 60,
-                  width: 120,
-                  child: Image.asset(
-                    "assets/logoyeni.png",
-                    fit: BoxFit.fitHeight,
+                  Container(
+                    height: 60,
+                    width: 280,
+                    alignment: Alignment.centerRight,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [
+                          Colors.white.withOpacity(0.5),
+                          Colors.transparent
+                        ],
+                            stops: const [
+                          0.53,
+                          1
+                        ],
+                            begin: Alignment.centerRight,
+                            end: Alignment.centerLeft)),
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 15),
+                      alignment: Alignment.centerRight,
+                      decoration: const BoxDecoration(
+                        color: Colors.transparent,
+                      ),
+                      height: 60,
+                      width: 120,
+                      child: Image.asset(
+                        "assets/logoyeni.png",
+                        fit: BoxFit.fitHeight,
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
           )

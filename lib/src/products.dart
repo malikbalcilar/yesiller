@@ -1,6 +1,7 @@
 List<Map<String, dynamic>> products = [
   {
-    "asset": "assets/ceviz.jpg",
+    "asset": "assets/ceviz.png",
+    "i" : 0,
     "title": "Ceviz Kömür",
     "properties": {
       "Ebat": "22 mm - 80 mm",
@@ -11,6 +12,7 @@ List<Map<String, dynamic>> products = [
   {
     "asset": "assets/fındık.png",
     "title": "Fındık Kömür",
+    "i" : 1,
     "properties": {
       "Ebat": "12 mm - 22 mm",
       "Kalori": "4800 kkal/kg - 8000 kkal/kg",
@@ -20,6 +22,7 @@ List<Map<String, dynamic>> products = [
   },
   {
     "asset": "assets/limon.png",
+    "i" : 2,
     "title": "Limon Kömür",
     "properties": {
       "Ebat": "40 mm - 80 mm",
@@ -30,6 +33,7 @@ List<Map<String, dynamic>> products = [
   {
     "asset": "assets/portakal.png",
     "title": "Portakal Kömür",
+    "i" : 3,
     "properties": {
       "Ebat": "80 mm - 100 mm",
       "Kalori": "4800 kkal/kg - 8000 kkal/kg",
@@ -40,6 +44,7 @@ List<Map<String, dynamic>> products = [
   {
     "asset": "assets/karpuz.png",
     "title": "Karpuz Kömür",
+    "i" : 4,
     "properties": {
       "Ebat": "100 mm ve üzeri",
       "Kalori": "4800 kkal/kg - 8000 kkal/kg",

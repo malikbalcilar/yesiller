@@ -26,37 +26,64 @@ class _YesillerProductsPageState extends ResponsiveState<YesillerProductsPage> {
       child: Container(
         color: Colors.white,
         child: SingleChildScrollView(
-          child: Column(
-            children: products
-                .map((product) => Padding(
-                      padding: const EdgeInsets.only(bottom: 0),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 40),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: products
+                  .map((product) => Padding(
+                        padding: const EdgeInsets.only(top: 20),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: buildProductPicture(product),
-                            ),
-                            Expanded(
-                              child: buildProductDescription(
-                                  product, fontSize1, fontSize2, fontSize3),
-                            ),
-                          ],
+                          children: product["i"].isEven
+                              ? childrenRow(
+                                  product, fontSize1, fontSize2, fontSize3)
+                              : childrenRow(
+                                      product, fontSize1, fontSize2, fontSize3,
+                                      rev: true)
+                                  .reversed
+                                  .toList(),
                         ),
-                      ),
-                    ))
-                .toList(),
+                      ))
+                  .toList(),
+            ),
           ),
         ),
       ),
     );
   }
 
+  List<Widget> childrenRow(Map<String, dynamic> product, double fontSize1,
+      double fontSize2, double fontSize3,
+      {bool rev = false}) {
+    return [
+      Expanded(
+        child: Container(child: buildProductPicture(product)),
+      ),
+      Expanded(
+        child: Container(
+          alignment: rev ? Alignment.centerRight : Alignment.centerLeft,
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.4,
+            alignment: Alignment.centerRight,
+            child: buildProductDescription(
+              product,
+              fontSize1,
+              fontSize2,
+              fontSize3,
+            ),
+          ),
+        ),
+      ),
+    ];
+  }
+
   Column buildProductDescription(Map<String, dynamic> product, double fontSize1,
-      double fontSize2, double fontSize3) {
+      double fontSize2, double fontSize3,
+      {bool rev = false}) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment:
+          rev ? CrossAxisAlignment.end : CrossAxisAlignment.start,
       children: [
         Text(
           product["title"],
@@ -115,7 +142,7 @@ class _YesillerProductsPageState extends ResponsiveState<YesillerProductsPage> {
 
   @override
   Widget buildMobile(BuildContext context) {
-    return buildKalipArka(40, 25, 23);
+    return buildKalipArka(29, 22, 20);
   }
 
   @override

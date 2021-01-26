@@ -50,7 +50,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
   int current = 0;
 
   ///
-  Widget gecisli({@required Size size}) {
+  Widget gecisli({@required Size size, double fontSize = 35}) {
     return Container(
         width: size.width,
         height: size.height,
@@ -81,14 +81,14 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                     opacity: current == i ? 1 : 0,
                     child: Text(
                       e.value,
-                      style: const TextStyle(
+                      style: TextStyle(
                           color: Colors.white,
-                          fontSize: 35,
+                          fontSize: fontSize,
                           fontWeight: FontWeight.w100),
                     ),
                   ),
                   duration: const Duration(milliseconds: 1500),
-                  top: (size.height / 2),
+                  top: (size.height / 2) - fontSize,
                   right: current == i ? 30 : 120,
                 )
               ],
@@ -125,6 +125,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
             Container(
               width: size.width,
               height: 300,
+
               ///ALT TARAF ADRESLER
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -241,7 +242,8 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
         child: Column(
           children: [
             gecisli(
-              size: Size(size.width, 630),
+              size: Size(size.width, size.height * 0.6),
+              fontSize: 20
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -249,7 +251,25 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   buildAddress1(),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Container(
+                    height: 0.3,
+                    width: size.width,
+                    color: Colors.white.withOpacity(0.5),
+                    margin: EdgeInsets.symmetric(horizontal: 20),
+                  ),
                   buildAddress2(),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Container(
+                    height: 0.3,
+                    width: size.width,
+                    color: Colors.white.withOpacity(0.5),
+                    margin: EdgeInsets.symmetric(horizontal: 20),
+                  ),
                   Container(
                       height: 200,
                       alignment: Alignment.center,

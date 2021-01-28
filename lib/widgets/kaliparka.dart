@@ -2,19 +2,21 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_page/responsive_page.dart';
+import 'package:yesiller/src/tab_controller.dart';
 
 ///
 class KalipArka extends StatefulWidget {
   ///
   const KalipArka(
       {Key key,
-        this.child,
-        this.initialAnimate = true,
-        this.distance = 40,
-        this.duration = const Duration(milliseconds: 1630),
-        this.opacityDuration = const Duration(milliseconds: 3000),
-        this.delay = const Duration(milliseconds: 150),
-        this.yatay = true})
+      this.child,
+      this.initialAnimate = true,
+      this.distance = 40,
+      this.duration = const Duration(milliseconds: 1630),
+      this.opacityDuration = const Duration(milliseconds: 3000),
+      this.delay = const Duration(milliseconds: 150),
+      this.yatay = true})
       : super(key: key);
   final Widget child;
   final double distance;
@@ -24,15 +26,16 @@ class KalipArka extends StatefulWidget {
   final Duration delay;
   final bool yatay;
 
-
-
   @override
   _KalipArkaState createState() => _KalipArkaState();
 }
 
-class _KalipArkaState extends State<KalipArka> {
+class _KalipArkaState extends ResponsiveState<KalipArka> {
+
   @override
   void initState() {
+
+
     animated = !widget.initialAnimate;
     animate();
     super.initState();
@@ -47,8 +50,8 @@ class _KalipArkaState extends State<KalipArka> {
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
+
+  Widget buildAll(BuildContext context , double bottomH ) {
     var size = MediaQuery.of(context).size;
 
     return Container(
@@ -69,7 +72,7 @@ class _KalipArkaState extends State<KalipArka> {
                         decoration: const BoxDecoration(
                             image: DecorationImage(
                                 repeat: ImageRepeat.repeat,
-                                image: AssetImage("logoyeni.png"))),
+                                image: AssetImage("assets/logoyeni.png"))),
                       ),
                     ),
                     imageFilter: ImageFilter.blur(sigmaY: 3, sigmaX: 3)),
@@ -107,64 +110,101 @@ class _KalipArkaState extends State<KalipArka> {
           ),
 
           /// Bottom siyah bar
-          Container(
-            width: size.width,
-            height: 60,
-            alignment: Alignment.centerRight,
-            color: const Color(0xFF012418),
+          SafeArea(
             child: Container(
-              color: Colors.black.withOpacity(0.8),
-              width: double.infinity,
-              height: double.infinity,
+              width: size.width,
+              height: bottomH,
               alignment: Alignment.centerRight,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Text(
-                      "COPYRIGHT ${String.fromCharCode(0x00A9)} 2021 MM Yazılım",
-                      style: const TextStyle(color: Colors.white ,fontSize: 11),
-                    ),
-                  ),
-                  Container(
-                    height: 60,
-                    width: 280,
-                    alignment: Alignment.centerRight,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [
-                          Colors.white.withOpacity(0.5),
-                          Colors.transparent
-                        ],
-                            stops: const [
-                          0.53,
-                          1
-                        ],
-                            begin: Alignment.centerRight,
-                            end: Alignment.centerLeft)),
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 15),
-                      alignment: Alignment.centerRight,
-                      decoration: const BoxDecoration(
-                        color: Colors.transparent,
-                      ),
-                      height: 60,
-                      width: 120,
-                      child: Image.asset(
-                        "assets/logoyeni.png",
-                        fit: BoxFit.fitHeight,
+              color: const Color(0xFF012418),
+              child: Container(
+                color: Colors.black.withOpacity(0.8),
+                width: double.infinity,
+                height: double.infinity,
+                alignment: Alignment.centerRight,
+                child: Stack(
+                  alignment: Alignment.centerLeft,
+                  children: [
+                    Positioned(
+                      left: 0,
+                      height: bottomH,
+                      child: Container(
+                        alignment: Alignment.centerLeft,
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Text(
+                          "COPYRIGHT ${String.fromCharCode(0x00A9)} 2021 MM Yazılım",
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 11),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    Positioned(
+                      right: 0,
+                      child: Container(
+                        height: bottomH,
+                        width: 280,
+                        alignment: Alignment.centerRight,
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                colors: [
+                              Colors.white.withOpacity(0.5),
+                              Colors.transparent
+                            ],
+                                stops: const [
+                              0.53,
+                              1
+                            ],
+                                begin: Alignment.centerRight,
+                                end: Alignment.centerLeft)),
+                        child: Container(
+                          margin: const EdgeInsets.only(right: 15),
+                          alignment: Alignment.centerRight,
+                          decoration: const BoxDecoration(
+                            color: Colors.transparent,
+                          ),
+                          height: bottomH,
+                          width: 120,
+                          child: Image.asset(
+                            "assets/logoyeni.png",
+                            fit: BoxFit.fitHeight,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           )
         ],
       ),
     );
+  }
 
+
+  @override
+  Widget buildDesktop(BuildContext context) {
+    return buildAll(context, 60);
+  }
+
+  @override
+  Widget buildMobile(BuildContext context) {
+    // TODO: implement buildMobile
+    return buildAll(context, 40);
+    throw UnimplementedError();
+  }
+
+  @override
+  Widget buildWideMobileOrTablet(BuildContext context) {
+    // TODO: implement buildWideMobileOrTablet
+    return buildAll(context, 50);
+    throw UnimplementedError();
+  }
+
+  @override
+  Widget buildWideTabletOrDesktop(BuildContext context) {
+    // TODO: implement buildWideTabletOrDesktop
+    return buildAll(context, 50);
+    throw UnimplementedError();
   }
 }
 

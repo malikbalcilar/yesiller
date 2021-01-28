@@ -167,6 +167,16 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
   }
 
   Column buildSocialButtons() {
+
+  // var gifEl1 =ImageElement()
+  //   ..src = "/assets/images/tourism.gif"
+  // //          ..height = 500
+  // //          ..width = 800
+  //   ..style.border = "none";;
+
+
+
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -184,7 +194,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(11)),
                 child: Image.asset(
-                  "icons8-instagram.gif",
+                  "assets/icons8-instagram.gif",
                   height: 40,
                   width: 40,
                 ),
@@ -202,7 +212,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
               },
               child: ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(20)),
-                  child: Image.asset("facebook.gif", height: 40, width: 40)),
+                  child: Image.asset("assets/facebook.gif", height: 40, width: 40)),
             ),
           ],
         ),

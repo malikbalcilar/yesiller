@@ -82,48 +82,56 @@ class _YesillerHomePageBaseState extends ResponsiveState<YesillerHomePageBase> {
       buildDesktop(context);
 
   Widget _mobileAppBar() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Stack(
+      alignment: Alignment.centerLeft,
       children: [
-        Container(
-          height: 50,
-          width: 296,
-          alignment: Alignment.centerLeft,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [Colors.white.withOpacity(0.6), Colors.transparent],
-                  stops: const [0.3, 1],
-                  begin: Alignment.centerLeft,
-                  end: const Alignment(1, 0))),
+        Positioned(
+          left: 0,
           child: Container(
-            margin: const EdgeInsets.only(left: 10),
-            decoration: const BoxDecoration(
-              color: Colors.transparent,
-            ),
             height: 50,
-            width: 145,
-            child: Padding(
-              padding: const EdgeInsets.all(1),
-              child: Image.asset(
-                "assets/logoyeni.png",
-                fit: BoxFit.fitHeight,
+            width: 296,
+            alignment: Alignment.centerLeft,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    colors: [Colors.white.withOpacity(0.6), Colors.transparent],
+                    stops: const [0.3, 1],
+                    begin: Alignment.centerLeft,
+                    end: const Alignment(1, 0))),
+            child: Container(
+              margin: const EdgeInsets.only(left: 10),
+              decoration: const BoxDecoration(
+                color: Colors.transparent,
+              ),
+              height: 50,
+              width: 145,
+              child: Padding(
+                padding: const EdgeInsets.all(1),
+                child: Image.asset(
+                  "assets/logoyeni.png",
+                  fit: BoxFit.fitHeight,
+                ),
               ),
             ),
           ),
         ),
 
         /// Üst Butonlar Buraya Taşındı
-        Padding(
-          padding: const EdgeInsets.only(right: 15, top: 0),
-          child: IconButton(
-              icon: const Icon(
-                Icons.dehaze_rounded,
-                color: Colors.white,
-                size: 30,
-              ),
-              onPressed: () {
-                mobileScaffold.currentState.openEndDrawer();
-              }),
+        Positioned(
+          right: 0,
+          height: 50,
+          child: Container(
+            alignment: Alignment.center,
+            padding: const EdgeInsets.only(right: 15, top: 0),
+            child: IconButton(
+                icon: const Icon(
+                  Icons.dehaze_rounded,
+                  color: Colors.white,
+                  size: 30,
+                ),
+                onPressed: () {
+                  mobileScaffold.currentState.openEndDrawer();
+                }),
+          ),
         )
 
         ///  ÜST BUTONLAR
@@ -177,38 +185,44 @@ class _YesillerHomePageBaseState extends ResponsiveState<YesillerHomePageBase> {
   }
 
   Widget _desktopAppBar() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Stack(
+      alignment: Alignment.centerLeft,
       children: [
-        Container(
-          height: 65,
-          width: 300,
-          alignment: Alignment.centerLeft,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [Colors.white.withOpacity(0.6), Colors.transparent],
-                  stops: const [0.3, 1],
-                  begin: Alignment.centerLeft,
-                  end: const Alignment(1, 0))),
+        Positioned(
+          left: 0,
           child: Container(
-            margin: const EdgeInsets.only(left: 10),
-            decoration: const BoxDecoration(
-              color: Colors.transparent,
-            ),
             height: 65,
-            width: 145,
-            child: Padding(
-              padding: const EdgeInsets.all(1),
-              child: Image.asset(
-                "assets/logoyeni.png",
-                fit: BoxFit.fitHeight,
+            width: 300,
+            alignment: Alignment.centerLeft,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    colors: [Colors.white.withOpacity(0.6), Colors.transparent],
+                    stops: const [0.3, 1],
+                    begin: Alignment.centerLeft,
+                    end: const Alignment(1, 0))),
+            child: Container(
+              margin: const EdgeInsets.only(left: 10),
+              decoration: const BoxDecoration(
+                color: Colors.transparent,
+              ),
+              height: 65,
+              width: 145,
+              child: Padding(
+                padding: const EdgeInsets.all(1),
+                child: Image.asset(
+                  "assets/logoyeni.png",
+                  fit: BoxFit.fitHeight,
+                ),
               ),
             ),
           ),
         ),
 
         /// Üst Butonlar Buraya Taşındı
-        const TopButtons()
+        const Positioned(
+            right: 0,
+            height: 65,
+            child:  TopButtons())
 
         ///  ÜST BUTONLAR
       ],

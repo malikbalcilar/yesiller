@@ -190,21 +190,21 @@ class _KalipArkaState extends ResponsiveState<KalipArka> {
   Widget buildMobile(BuildContext context) {
     // TODO: implement buildMobile
     return buildAll(context, 40);
-    throw UnimplementedError();
+
   }
 
   @override
   Widget buildWideMobileOrTablet(BuildContext context) {
     // TODO: implement buildWideMobileOrTablet
     return buildAll(context, 50);
-    throw UnimplementedError();
+
   }
 
   @override
   Widget buildWideTabletOrDesktop(BuildContext context) {
     // TODO: implement buildWideTabletOrDesktop
     return buildAll(context, 50);
-    throw UnimplementedError();
+
   }
 }
 

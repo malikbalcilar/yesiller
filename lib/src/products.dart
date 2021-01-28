@@ -7,7 +7,7 @@ List<Map<String, dynamic>> products = [
       "Ebat": "22.5 mm - 22.9 mm",
       "Kalori": "5500 kkal/kg - 6000 kkal/kg",
       "Kullanım Alanları":
-      "Soba ve kalorifer kazanlarında kullanılmaktadır."
+      "Soba yakıtı olarak kullanılmaktadır."
     }
   },
   {
@@ -16,8 +16,8 @@ List<Map<String, dynamic>> products = [
     "title": "Ceviz Kömür",
     "properties": {
       "Ebat": "22 mm - 80 mm",
-      "Kalori": "4000 kkal/kg - 7300 kkal/kg",
-      "Kullanım Alanları": "Soba ve kalorifer kazanlarında kullanılmaktadır."
+      "Kalori": "7000 kkal/kg - 8000 kkal/kg",
+      "Kullanım Alanları": "Kalorifer kazanlarında kullanılmaktadır."
     }
   },
   {
@@ -26,7 +26,7 @@ List<Map<String, dynamic>> products = [
     "i" : 2,
     "properties": {
       "Ebat": "12 mm - 22 mm",
-      "Kalori": "4800 kkal/kg - 8000 kkal/kg",
+      "Kalori": "7000 kkal/kg - 7800 kkal/kg",
       "Kullanım Alanları":
           "Kat kaloriferlerinde ve fabrikalarda kullanılmaktadır."
     }
@@ -37,8 +37,8 @@ List<Map<String, dynamic>> products = [
     "title": "Limon Kömür",
     "properties": {
       "Ebat": "40 mm - 80 mm",
-      "Kalori": "4800 kkal/kg - 8000 kkal/kg",
-      "Kullanım Alanları": "Soba ve kalorifer kazanlarında kullanılır."
+      "Kalori": "7000 kkal/kg - 8000 kkal/kg",
+      "Kullanım Alanları": "Kalorifer kazanlarında kullanılır."
     }
   },
   {
@@ -47,7 +47,7 @@ List<Map<String, dynamic>> products = [
     "i" : 4,
     "properties": {
       "Ebat": "40 mm - 80 mm",
-      "Kalori": "7500 kkal/kg - 8000 kkal/kg",
+      "Kalori": "5500 kkal/kg - 6000 kkal/kg",
       "Kullanım Alanları":
       "Soba ve  kalorifer kazanlarında kullanılır."
     }
@@ -58,7 +58,7 @@ List<Map<String, dynamic>> products = [
     "i" : 5,
     "properties": {
       "Ebat": "80 mm - 100 mm",
-      "Kalori": "4800 kkal/kg - 8000 kkal/kg",
+      "Kalori": "7500 kkal/kg - 8000 kkal/kg",
       "Kullanım Alanları":
           "Kalorifer kazanlarında ve merkezi ısıtma sistemlerinde kullanılır."
     }
@@ -69,7 +69,7 @@ List<Map<String, dynamic>> products = [
     "i" : 6,
     "properties": {
       "Ebat": "100 mm ve üzeri",
-      "Kalori": "4800 kkal/kg - 8000 kkal/kg",
+      "Kalori": "7500 kkal/kg - 8000 kkal/kg",
       "Kullanım Alanları":
           "Kalorifer kazanlarında ve merkezi ısıtma sistemlerinde kullanılır."
     }
@@ -77,6 +77,16 @@ List<Map<String, dynamic>> products = [
   {
     "asset": "assets/odunn.jfif",
     "title": "Sobalık Odun",
+    "i" : 7,
+    "properties": {
+
+      "Kullanım Alanları":
+      "Soba ve katı yakıt kazanlarında kullanılır."
+    }
+  },
+  {
+    "asset": "assets/tahtaa.jfif",
+    "title": "Sobalık Tahta",
     "i" : 7,
     "properties": {
 

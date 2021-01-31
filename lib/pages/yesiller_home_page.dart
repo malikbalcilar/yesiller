@@ -129,7 +129,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
 
               ///ALT TARAF ADRESLER
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.00001),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [

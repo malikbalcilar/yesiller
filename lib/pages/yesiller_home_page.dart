@@ -98,6 +98,7 @@ class _YesillerHomePageState extends ResponsiveState<YesillerHomePage> {
   }
 
   Map<String, String> yaziler = {
+    "son.jpg":"Karanlığın Emekle Aydınlanışı",
     "kömür.jpg": "Yüksek Kalori Verimli Enerji",
     "kömürel.jpg": "Isınmanın Değerli Hali",
     "orman.jpg": "Sürdürülebilir Yaşam\nYaşanılabilir Çevre",

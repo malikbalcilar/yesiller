@@ -87,9 +87,8 @@ List<Map<String, dynamic>> products = [
   {
     "asset": "assets/tahtaa.jfif",
     "title": "Sobalık Tahta",
-    "i" : 7,
+    "i" : 8,
     "properties": {
-
       "Kullanım Alanları":
       "Soba ve katı yakıt kazanlarında kullanılır."
     }
